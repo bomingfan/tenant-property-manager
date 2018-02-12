@@ -1,45 +1,60 @@
-module.exports = function(sequelize, Sequelize) {
+module.exports = function(sequelize, DataTypes) {
  
-    var Tenant = sequelize.define('tenant', {
+    var Tenant = sequelize.define('Tenant', {
  
         id: {
             autoIncrement: true,
             primaryKey: true,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
  
         firstname: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             notEmpty: true
         },
  
         lastname: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             notEmpty: true
         },
  
         address: {
-            type: Sequelize.TEXT,
+            type: DataTypes.TEXT,
             notEmpty: true
         },
  
         email: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             validate: {
                 isEmail: true
             }
         },
  
         password: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
  
-        last_login: {
-            type: Sequelize.DATE
-        }
     });
+
+    Tenant.associate = function(models) {
+        // We're saying that a tenant should belong to a landlord
+        // A Post can't be created without a landlord due to the foreign key constraint
+        Tenant.belongsTo(models.Landlord, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      };
+    
+    Tenant.associate = function(models) {
+        // Associating Landlord with Tenant
+        // When a Landlord is deleted, also delete any associated Tenants
+        Tenant.hasMany(models.Ticket, {
+          onDelete: "cascade"
+        });
+      };
  
     return Tenant;
  
-}
+};
