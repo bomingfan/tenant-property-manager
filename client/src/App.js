@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TenantSignup from "./pages/TenantSignup";
-import TenantMain from "./pages/TenantMain";
-import "./App.css";
+import LandlordSignup from "./pages/LandlordSignup";
+import TenantSignin from "./pages/TenantSignin";
+
+
 
 class App extends Component {
   render() {
@@ -10,8 +12,9 @@ class App extends Component {
       <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={TenantMain} />
-          
+          <Route exact path="/tsignup" component={TenantSignup} />
+          <Route exact path="/lsignup" component={LandlordSignup} />
+          <Route exact path="/" component={TenantSignin} />
         </Switch>
       </div>
     </Router>
