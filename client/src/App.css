@@ -1,0 +1,15 @@
+nav{
+    box-shadow: none;
+    background-color: lightslategray;
+}
+a{
+    background-color: rgba(72, 160, 163, 0.795);
+}
+.page-footer{
+    background-color: lightslategray;
+
+}
+
+body{
+    background-color: lightgray;
+}
