@@ -3,7 +3,7 @@ import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
 import FormBtn from '../../components/Form';
 import { Icon, Input } from 'react-materialize';
-import './TenantSignin.css';
+// import './TenantSignin.css';
 
 
 class TenantSignin extends React.Component {
