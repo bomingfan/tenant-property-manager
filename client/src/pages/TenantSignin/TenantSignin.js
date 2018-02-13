@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
-import FormBtn from '../../components/Form';
 import { Icon, Input } from 'react-materialize';
 // import './TenantSignin.css';
 
@@ -50,10 +49,10 @@ class TenantSignin extends React.Component {
                     </form>
 
                     <form>
-                        <a href="#!">Create Tenant Account</a>
+                        <a href="/tsignup">Create Tenant Account</a>
                         <br>
                         </br>
-                        <a href="#!">Create Landlord Account</a>
+                        <a href="/lsignup">Create Landlord Account</a>
                     </form>
 
 

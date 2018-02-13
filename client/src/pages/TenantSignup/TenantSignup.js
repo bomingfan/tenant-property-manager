@@ -58,7 +58,7 @@ class TenantSignup extends React.Component {
                             </Input>
                         </Row>
                         <Row>
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <button className="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <Icon right>send</Icon>
                             </button>
                         </Row>
