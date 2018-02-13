@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
-import FormBtn from '../../components/Form';
 import { Icon, Input } from 'react-materialize';
 import './TenantSignup.css';
 
@@ -22,6 +21,7 @@ class TenantSignup extends React.Component {
             [name]: value
         });
     };
+
 
     render() {
         return (
@@ -51,11 +51,16 @@ class TenantSignup extends React.Component {
                         <Row>
                             <Input s={6} label="Password" validate><Icon>enhanced_encryption</Icon></Input>
 
-                            <Input s={6} type='select' label="Materialize Select" defaultValue='2'>
+                            <Input s={6} type='select' label="Select Landlord" defaultValue=''>
                                 <option value='1'>Option 1</option>
                                 <option value='2'>Option 2</option>
                                 <option value='3'>Option 3</option>
                             </Input>
+                        </Row>
+                        <Row>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <Icon right>send</Icon>
+                            </button>
                         </Row>
                     </form>
                 </Container>
