@@ -22,9 +22,11 @@ class TenantSignin extends React.Component {
     render() {
         return (
             <div>
+                <h1><b><center>Tenant Property Manager</center></b></h1>
                 <Container>
                     <form>
                         <Row>
+                            <Col s={3} />
                             <Input s={5} label="Enter Your Email" validate><Icon>email</Icon>
 
                             </Input>
@@ -34,6 +36,7 @@ class TenantSignin extends React.Component {
 
                     <form>
                         <Row>
+                            <Col s={3} />
                             <Input s={5} label="Enter Your Password"
                                 validate><Icon>lock</Icon>
                             </Input>
@@ -44,7 +47,7 @@ class TenantSignin extends React.Component {
 
                     <form>
                         <Row>
-                        <button class="btn waves-effect waves-light" type="login" name="action">Login</button>
+                            <button class="btn waves-effect waves-light" type="login" name="action">Login</button>
                         </Row>
                     </form>
 
