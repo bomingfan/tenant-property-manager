@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./TenantMain.css";
 import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
-import FormBtn from '../../components/Form';
 import { Icon, Input, Navbar, NavItem, Card } from 'react-materialize';
 
 class TenantMain extends React.Component {
