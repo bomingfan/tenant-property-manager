@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt-nodejs");
+
 module.exports = function(sequelize, DataTypes) {
  
     var Landlord = sequelize.define('Landlord', {
@@ -36,6 +38,16 @@ module.exports = function(sequelize, DataTypes) {
         },
  
     });
+
+    Landlord.beforeCreate(function(model, options){
+        return new Promise (function(resolve, reject){
+            bcrypt.hash(model.password, null, null, function(err, hash) {
+                if(err) return reject(err);
+                model.password = hash;
+                return resolve(model, options);
+            });
+        });
+      });
  
     Landlord.associate = function(models) {
         // Associating Landlord with Tenant

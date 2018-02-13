@@ -52,10 +52,10 @@ class TenantSignin extends React.Component {
                     </form>
 
                     <form>
-                        <a href="#!">Create Tenant Account</a>
+                        <a href="/tsignup">Create Tenant Account</a>
                         <br>
                         </br>
-                        <a href="#!">Create Landlord Account</a>
+                        <a href="/lsignup">Create Landlord Account</a>
                     </form>
 
 
