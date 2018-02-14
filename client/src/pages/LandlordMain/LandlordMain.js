@@ -10,21 +10,19 @@ class LandlordMain extends React.Component {
         return (
             <div>
                 <Container>
-                    <Row>
-                        <Navbar right>
-
-                            <NavItem href='Read-Me.html'>How the App Works</NavItem>
+                    <Row>                        
+                        <Navbar s={3} right>
+                            <NavItem href='Read-Me.html'>App Help</NavItem>
                             <NavItem href='sign-out.html'>Sign Out</NavItem>
                         </Navbar>
-
-                        <Navbar left>
-                            <NavItem href='/'><Icon>home</Icon>Home</NavItem>
-                            <NavItem href='rent-reminder.html'><Icon>attach_money</Icon>Rent Reminder</NavItem>
-                            <NavItem href='create-repair.html'><Icon>announcement</Icon>Post Announcement</NavItem>
-                            <NavItem href='view-repair.html'><Icon>view_list</Icon>View Repair Tickets</NavItem>
-                        </Navbar>
+                       
+                        <Navbar s={9} left>
+                        <NavItem href='/'><Icon left={true}>home </Icon>Home</NavItem>
+                            <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent Reminder</NavItem>
+                            <NavItem href='create-repair.html'><Icon left={true}>announcement</Icon> Announcements</NavItem>
+                            <NavItem href='view-repair.html'><Icon left={true}>view_list</Icon>Repair Tickets</NavItem>
+                        </Navbar>                      
                     </Row>
-
                     <Row>
                         <Input s={6} type='select' label='View Properties' icon='location_city' defaultValue='1'>
                             <option value='1'>Property 1</option>

@@ -14,3 +14,11 @@ nav ul a{
 body{
     background-color: lightgray;
 }
+
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons{
+   
+    font-size: 18px;
+    font-style: normal;
+  
+}
