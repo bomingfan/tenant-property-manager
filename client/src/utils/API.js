@@ -16,5 +16,10 @@ export default {
 //   Saves landlord information to the database
   saveLandlord: function(landlordData) {
     return axios.post("/api/landlord", landlordData);
+  },
+
+  // Return landlords for use
+  getLandlord: function() {
+    return axios.get("/api/landlord");
   }
 };

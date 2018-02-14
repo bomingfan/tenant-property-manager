@@ -3,7 +3,7 @@ import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input } from 'react-materialize';
 import './TenantSignup.css';
-import API from "../../utils/API.js";
+import API from "./../../utils/API";
 
 class TenantSignup extends React.Component {
 
@@ -16,6 +16,17 @@ class TenantSignup extends React.Component {
         address: ""
     };
 
+    componentDidMount() {
+        // Request the landlords from API
+        API.getLandlord().then(res => {
+             // Then update the state
+            this.setState({
+                landlord: res.data
+            });
+        });
+       
+    };
+
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -25,10 +36,6 @@ class TenantSignup extends React.Component {
 
 
     render() {
-
-        let landlords = API.state.values.map(v => (
-            <option value={v.id}>{v.firstname}, {v.lastname}, {v.address}</option>
-        ));
 
         return (
             <div>
@@ -57,7 +64,7 @@ class TenantSignup extends React.Component {
                         <Input s={6} label="Password" validate><Icon>enhanced_encryption</Icon></Input>
 
                         <Input s={6} type='select' label="Select Landlord" defaultValue=''>
-                            {landlords}
+                            {this.state.landlord}
                         </Input>
                     </Row>
                     <Row>

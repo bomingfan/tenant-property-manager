@@ -2,9 +2,10 @@ nav{
     box-shadow: none;
     background-color: lightslategray;
 }
-a{
+nav ul a{
     background-color: rgba(72, 160, 163, 0.795);
 }
+
 .page-footer{
     background-color: lightslategray;
 
