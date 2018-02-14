@@ -26,7 +26,7 @@ class TenantSignup extends React.Component {
 
     render() {
 
-        let landlords = API.Landlord.state.values.map(v => (
+        let landlords = API.state.values.map(v => (
             <option value={v.id}>{v.firstname}, {v.lastname}, {v.address}</option>
         ));
 

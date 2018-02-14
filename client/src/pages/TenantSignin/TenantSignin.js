@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
-import FormBtn from '../../components/Form';
 import { Icon, Input } from 'react-materialize';
 // import './TenantSignin.css';
 
@@ -23,14 +22,17 @@ class TenantSignin extends React.Component {
     render() {
         return (
             <div>
+                <h1><b><center>Tenant Property Manager</center></b></h1>
                 <Container>
                         <Row>
+                            <Col s={3} />
                             <Input s={5} label="Enter Your Email" validate><Icon>email</Icon>
 
                             </Input>
                         </Row>
 
                         <Row>
+                            <Col s={3} />
                             <Input s={5} label="Enter Your Password"
                                 validate><Icon>lock</Icon>
                             </Input>
@@ -38,13 +40,13 @@ class TenantSignin extends React.Component {
                         </Row>
 
                         <Row>
-                        <button class="btn waves-effect waves-light" type="login" name="action">Login</button>
+                            <button class="btn waves-effect waves-light" type="login" name="action">Login</button>
                         </Row>
 
-                        <a href="#!">Create Tenant Account</a>
+                        <a href="/tsignup">Create Tenant Account</a>
                         <br>
                         </br>
-                        <a href="#!">Create Landlord Account</a>
+                        <a href="/lsignup">Create Landlord Account</a>
 
 
                 </Container>

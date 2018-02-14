@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TenantSignup from "./pages/TenantSignup";
 import LandlordSignup from "./pages/LandlordSignup";
 import TenantSignin from "./pages/TenantSignin";
+import TenantMain from "./pages/TenantMain";
+import './App.css';
 
 
 
@@ -15,6 +17,7 @@ class App extends Component {
           <Route exact path="/tsignup" component={TenantSignup} />
           <Route exact path="/lsignup" component={LandlordSignup} />
           <Route exact path="/" component={TenantSignin} />
+          <Route exact path="/tmain" component={TenantMain} />
         </Switch>
       </div>
     </Router>
