@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import "./TenantMain.css";
+import "./LandlordMain.css";
 import Footer from '../../components/Footer';
 import { Container, Row, Col, Slider } from 'react-materialize';
 import { Icon, Input, Navbar, NavItem, Card, Slide } from 'react-materialize';
 
-class TenantMain extends React.Component {
-
-
+class LandlordMain extends React.Component {
 
     render() {
         return (
@@ -14,6 +12,7 @@ class TenantMain extends React.Component {
                 <Container>
                     <Row>
                         <Navbar right>
+
                             <NavItem href='Read-Me.html'>How the App Works</NavItem>
                             <NavItem href='sign-out.html'>Sign Out</NavItem>
                         </Navbar>
@@ -21,22 +20,22 @@ class TenantMain extends React.Component {
                         <Navbar left>
                             <NavItem href='/'><Icon>home</Icon>Home</NavItem>
                             <NavItem href='rent-reminder.html'><Icon>attach_money</Icon>Rent Reminder</NavItem>
-                            <NavItem href='create-repair.html'><Icon>create</Icon>Create Repair Ticket</NavItem>
+                            <NavItem href='create-repair.html'><Icon>announcement</Icon>Post Announcement</NavItem>
                             <NavItem href='view-repair.html'><Icon>view_list</Icon>View Repair Tickets</NavItem>
                         </Navbar>
                     </Row>
 
                     <Row>
-                        <Col m={6} s={6}>
-                            <Card className='blue-grey darken-5' textClassName='white-text' title='Upcoming Payments' actions={[<a href='rent-reminder.html'>Link To Rent</a>]}>
-                                View your upcoming rent due.
-		                    </Card>
-                        </Col>
+                        <Input s={6} type='select' label='View Properties' icon='location_city' defaultValue='1'>
+                            <option value='1'>Property 1</option>
+                            <option value='2'>Property 2</option>
+                            <option value='3'>Property 3</option>
+                        </Input>
 
-                        <Input m={6} s={6} type='select' label='Submit A Ticket Request' icon='format_paint' defaultValue='1'>
-                            <option value='1'>Repair Ticket</option>
-                            <option value='2'>Cleaning Ticket</option>
-                            <option value='3'>Rent Ticket</option>
+                        <Input s={6} type='select' label='View Tenants' icon='people_outline' defaultValue='1'>
+                            <option value='1'>Tenant 1</option>
+                            <option value='2'>Tenant 2</option>
+                            <option value='3'>Tenant 3</option>
                         </Input>
                     </Row>
 
@@ -44,31 +43,28 @@ class TenantMain extends React.Component {
                         <Slider >
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
-                                title="Welcome Tenant!" placement="left">
-                                This is your Apartment Management Portal.
+                                title="Welcome Landlord!" placement="left">
+                                This is your Property Management Portal.
 	                        </Slide>
                             <Slide
-                                src="http://www.jamesclarklaw.net/img/Spot/JamesClarkLawLandlordTenant.jpg"
-                                title="Access your apartment and landlord in one place!"
+                                src="http://www.smartcondomanagement.com/content/uploads/2014/10/TheLandlord_zpse246c3d1.jpg"
+                                title="Access all your properties and tenants in one place!"
                                 placement="left">
-                                Communicating with your landlord has never been easier!
+                                Communicating with tenants has never been easier!
 	                        </Slide>
                             <Slide
-                                src="https://assets.tvm.com.mt/en/wp-content/uploads/sites/2/2017/10/dar-xiri-1.jpg"
+                                src="https://seda.college/wp-content/uploads/landlord.jpg"
                                 title="Let's get started"
                                 placement="left">
                                 Just use the menus above.
 	                    </Slide>
                         </Slider>
                     </Row>
-
                 </Container>
-
                 <Footer />
             </div>
-
         )
     }
 }
 
-export default TenantMain;
+export default LandlordMain;
