@@ -4,9 +4,7 @@ import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input, Navbar, NavItem, Card } from 'react-materialize';
 
-class TenantMain extends React.Component {
-
-
+class TenantMain extends Component {
 
     render() {
         return (
@@ -29,7 +27,7 @@ class TenantMain extends React.Component {
 
                     <Row>
                         <Col m={6} s={6}>
-                            <Card className='blue-grey darken-5' textClassName='white-text' title='Upcoming Payments' actions={[<a href='rent-reminder.html'>Link To Rent</a>]}>
+                            <Card className='blue-grey darken-5' textClassName='white-text' title='Upcoming Payments' actions={[<a key='rent-reminder' href='rent-reminder.html'>Link To Rent</a>]}>
                                 View your upcoming rent due.
 		</Card>
                         </Col>

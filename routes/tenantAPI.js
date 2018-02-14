@@ -1,5 +1,9 @@
 // Requiring our models
-var db = require("../models");
+const db = require("../models");
+const bcrypt = require("bcrypt-nodejs");
+const jwt = require("jsonwebtoken");
+const exjwt = require('express-jwt');
+
 
 // Routes
 // =============================================================
@@ -9,14 +13,6 @@ module.exports = function(app) {
   app.post("/api/tenant", function(req, res) {
     db.Tenant.create(req.body).then(function(dbTenant) {
       res.json(dbTenant);
-    });
-  });
-
-
-  // POST route for saving a new landlord
-  app.post("/api/landlord", function(req, res) {
-    db.Landlord.create(req.body).then(function(dbLandlord) {
-      res.json(dbLandlord);
     });
   });
 

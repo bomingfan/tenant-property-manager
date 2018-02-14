@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input } from 'react-materialize';
 // import './TenantSignin.css';
