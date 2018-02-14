@@ -3,8 +3,17 @@ import "./TenantMain.css";
 import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input, Navbar, NavItem, Card } from 'react-materialize';
+import AuthService from '../../components/AuthService';
+import withAuth from '../../components/withAuth';
+
+const Auth = new AuthService();
 
 class TenantMain extends Component {
+    
+    handleLogout(){
+        Auth.logout()
+        this.props.history.replace('/llogin');
+     }
 
     render() {
         return (
@@ -12,9 +21,8 @@ class TenantMain extends Component {
                 <Container>
                     <Row>
                         <Navbar right>
-
-                            <NavItem href='Read-Me.html'>How the App Works</NavItem>
-                            <NavItem href='sign-out.html'>Sign Out</NavItem>
+                            <NavItem href='Read-Me.html'>{this.props.user.email}</NavItem>
+                            <NavItem type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</NavItem>
                         </Navbar>
 
                         <Navbar left>
@@ -49,4 +57,4 @@ class TenantMain extends Component {
     }
 }
 
-export default TenantMain;
+export default withAuth(TenantMain);

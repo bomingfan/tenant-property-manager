@@ -30,6 +30,7 @@ const jwtMW = exjwt({
 
   // POST route for landlord login
   app.post("/llogin", function (req, res) {
+    console.log(req.body);
     db.Landlord.findOne({
       where: {
         email: req.body.email
@@ -50,7 +51,7 @@ const jwtMW = exjwt({
           res.status(400).json({ err: "Password Doesn't Match", success: false, token: null })
         }
       });
-    });
+    }).catch(err => res.status(400).json(false));
   });
 
   // app.use(function(req, res, next) {

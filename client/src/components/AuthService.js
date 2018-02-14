@@ -15,11 +15,13 @@ export default class AuthService {
             method: 'POST',
             body: JSON.stringify({
                 email: username,
-                password
+                password: password
             })
         }).then(res => {
             this.setToken(res.token) // Setting the token in localStorage
             return Promise.resolve(res);
+        }).catch(err => {
+            return Promise.reject(err);
         })
     }
 

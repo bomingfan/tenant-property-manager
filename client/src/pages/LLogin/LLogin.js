@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-materialize';
-import { Icon, Input, Button } from 'react-materialize';
-import API from "../../utils/API.js";
+import { Icon, Input} from 'react-materialize';
 import AuthService from '../../components/AuthService.js';
 
 
