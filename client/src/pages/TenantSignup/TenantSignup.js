@@ -3,6 +3,7 @@ import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input } from 'react-materialize';
 import './TenantSignup.css';
+import API from "../../utils/API.js";
 
 class TenantSignup extends React.Component {
 
@@ -24,6 +25,11 @@ class TenantSignup extends React.Component {
 
 
     render() {
+
+        let landlords = API.Landlord.state.values.map(v => (
+            <option value={v.id}>{v.firstname}, {v.lastname}, {v.address}</option>
+        ));
+
         return (
             <div>
                 <Container>
@@ -36,33 +42,29 @@ class TenantSignup extends React.Component {
                         </Col>
                         <Col s={4} />
                     </Row>
-                    <form>
 
-                        <Row>
-                            <Input s={6} label="First Name" validate><Icon>account_circle</Icon></Input>
-                            <Input s={6} label="Last Name" validate><Icon>account_circle</Icon></Input>
-                        </Row>
+                    <Row>
+                        <Input s={6} label="First Name" validate><Icon>account_circle</Icon></Input>
+                        <Input s={6} label="Last Name" validate><Icon>account_circle</Icon></Input>
+                    </Row>
 
-                        <Row>
-                            <Input s={6} label="Email" validate><Icon>email</Icon></Input>
-                            <Input s={6} label="Address" validate><Icon>home</Icon></Input>
-                        </Row>
+                    <Row>
+                        <Input s={6} label="Email" validate><Icon>email</Icon></Input>
+                        <Input s={6} label="Address" validate><Icon>home</Icon></Input>
+                    </Row>
 
-                        <Row>
-                            <Input s={6} label="Password" validate><Icon>enhanced_encryption</Icon></Input>
+                    <Row>
+                        <Input s={6} label="Password" validate><Icon>enhanced_encryption</Icon></Input>
 
-                            <Input s={6} type='select' label="Select Landlord" defaultValue=''>
-                                <option value='1'>Option 1</option>
-                                <option value='2'>Option 2</option>
-                                <option value='3'>Option 3</option>
-                            </Input>
-                        </Row>
-                        <Row>
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <Input s={6} type='select' label="Select Landlord" defaultValue=''>
+                            {landlords}
+                        </Input>
+                    </Row>
+                    <Row>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <Icon right>send</Icon>
-                            </button>
-                        </Row>
-                    </form>
+                        </button>
+                    </Row>
                 </Container>
                 <Footer />
             </div>

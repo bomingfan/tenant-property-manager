@@ -48,7 +48,6 @@ class LandlordSignup extends React.Component {
                         </Col>
                         <Col s={4} />
                     </Row>
-                    <form>
 
                         <Row>
                             <Input s={6} label="First Name" validate
@@ -90,7 +89,6 @@ class LandlordSignup extends React.Component {
                             >Submit<Icon right>send</Icon>
                             </Button>
                         </Row>
-                    </form>
                 </Container>
                 <Footer />
             </div>
