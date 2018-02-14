@@ -1,2 +1,2 @@
-CREATE DATABASE IF EXISTS `property`;
+DROP DATABASE IF EXISTS `property`;
 
