@@ -23,8 +23,8 @@ app.get("/", function(res, res) {
 
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app);
-
+require("./routes/landlordAPI.js")(app);
+require("./routes/tenantAPI.js")(app);
 
 // Send every request to the React app
 // Define any API routes before this runs
@@ -33,10 +33,8 @@ app.get("*", function(req, res) {
 });
 
 
-
-
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
