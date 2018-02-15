@@ -1,21 +1,21 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input, Button} from 'react-materialize';
-import AuthService from '../../components/AuthService.js';
+import TAuthService from '../../components/TAuthService.js';
 
 
-class LLogin extends React.Component {
+class TLogin extends React.Component {
 
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        this.Auth = new AuthService();
+        this.Auth = new TAuthService();
     }
 
     componentWillMount() {
         if (this.Auth.loggedIn())
-            this.props.history.replace('/lmain');
+            this.props.history.replace('/tmain');
     }
 
     handleChange(e) {
@@ -31,7 +31,7 @@ class LLogin extends React.Component {
         this.Auth.login(this.state.email, this.state.password)
             .then(res => {
                 // console.log(res);
-                this.props.history.replace('/lmain');  
+                this.props.history.replace('/tmain');  
             })
             .catch(err => {
                 // console.log(err);
@@ -46,7 +46,7 @@ class LLogin extends React.Component {
     render() {
         return (
             <div>
-                <h1><b><center>Landlord Property Manager</center></b></h1>
+                <h1><b><center>Tenant Property Manager</center></b></h1>
                 <Container>
                     <form onSubmit={this.handleFormSubmit}>
                         <Row>
@@ -84,4 +84,4 @@ class LLogin extends React.Component {
     }
 }
 
-export default LLogin;
+export default TLogin;

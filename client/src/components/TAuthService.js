@@ -1,6 +1,6 @@
 import decode from 'jwt-decode';
 
-export default class AuthService {
+export default class TAuthService {
     // Initializing important variables
     constructor(domain) {
         this.domain = domain || 'http://localhost:3000' // API server domain
@@ -11,7 +11,7 @@ export default class AuthService {
 
     login(username, password) {
         // Get a token from api server using the fetch api
-        return this.fetch(`${this.domain}/llogin`, {
+        return this.fetch(`${this.domain}/tlogin`, {
             method: 'POST',
             body: JSON.stringify({
                 

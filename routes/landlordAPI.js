@@ -37,7 +37,7 @@ const jwtMW = exjwt({
     }).then(function (data) {
       // if user not found, return authentication failed.
       if(!data) {
-        res.status(401).json({ message: 'Authentication failed. User not found.' });
+        res.status(401).send('Authentication failed. User not found.' );
       } else 
       // we are comparing the plain text password 
       // with the hashsed password here
