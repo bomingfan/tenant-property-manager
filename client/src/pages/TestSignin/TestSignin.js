@@ -14,6 +14,7 @@ class TestSignin extends Component {
                     <h1>Sign in</h1>
 
                     <Row>
+
         <Col m={6} s={6}>    
         <Button left waves='light' node='a' href="/tlogin">Tenant<Icon right>arrow_forward</Icon></Button>
         
@@ -23,10 +24,15 @@ class TestSignin extends Component {
         <Button right waves='light' node='a' href="/llogin">Landlord<Icon right>arrow_forward</Icon></Button>
 </Col>
 
-         </Row>
+
+                        <Col m={6} s={6}>
+                            <Button right waves='light'>Landlord<Icon right>arrow_forward</Icon></Button>
+                        </Col>
+
+                    </Row>
                 </Container>
-<Footer />
-</div>
+                <Footer />
+            </div>
 
         )
     }
