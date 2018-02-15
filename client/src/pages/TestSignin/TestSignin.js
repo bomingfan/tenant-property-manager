@@ -14,19 +14,19 @@ class TestSignin extends React.Component {
                     <h1>Sign in</h1>
 
                     <Row>
-        <Col m={6} s={6}>    
-        <Button left waves='light'>Tenant<Icon right>arrow_forward</Icon></Button>
-        
-        </Col>
+                        <Col m={6} s={6}>
+                            <Button left waves='light'>Tenant<Icon right>arrow_forward</Icon></Button>
 
-        <Col m={6} s={6}>   
-        <Button right waves='light'>Landlord<Icon right>arrow_forward</Icon></Button>
-</Col>
+                        </Col>
 
-         </Row>
+                        <Col m={6} s={6}>
+                            <Button right waves='light'>Landlord<Icon right>arrow_forward</Icon></Button>
+                        </Col>
+
+                    </Row>
                 </Container>
-<Footer />
-</div>
+                <Footer />
+            </div>
 
         )
     }
