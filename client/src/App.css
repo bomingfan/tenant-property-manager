@@ -2,16 +2,10 @@ nav{
     box-shadow: none;
     background-color: lightslategray;
 }
-<<<<<<< HEAD
-/* a{
-    background-color: rgba(72, 160, 163, 0.795); */
-/* } */
-=======
 nav ul a{
     background-color: rgba(72, 160, 163, 0.795);
 }
 
->>>>>>> b4e7dec18fc1ab3d13827c6a0476ffd05214239a
 .page-footer{
     background-color: lightslategray;
 

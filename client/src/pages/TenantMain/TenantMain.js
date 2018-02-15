@@ -19,10 +19,10 @@ class TenantMain extends React.Component {
                         </Navbar>
 
                         <Navbar left>
-                            <NavItem href='/'><Icon>home</Icon>Home</NavItem>
-                            <NavItem href='rent-reminder.html'><Icon>attach_money</Icon>Rent Reminder</NavItem>
-                            <NavItem href='create-repair.html'><Icon>create</Icon>Create Repair Ticket</NavItem>
-                            <NavItem href='view-repair.html'><Icon>view_list</Icon>View Repair Tickets</NavItem>
+                            <NavItem href='/'><Icon>homeHOME</Icon></NavItem>
+                            <NavItem href='rent-reminder.html'><Icon>attach_moneyRENT</Icon></NavItem>
+                            <NavItem href='create-repair.html'><Icon>createCREATE TICKET</Icon></NavItem>
+                            <NavItem href='view-repair.html'><Icon>view_listVIEW TICKETS</Icon></NavItem>
                         </Navbar>
                     </Row>
 
