@@ -13,6 +13,7 @@ export default {
 //   deleteBook: function(id) {
 //     return axios.delete("/api/books/" + id);
 //   },
+
 //   Saves landlord information to the database
   saveLandlord: function(landlordData) {
     return axios.post("/api/landlord", landlordData);
@@ -21,5 +22,13 @@ export default {
   // Return landlords for use
   getLandlord: function() {
     return axios.get("/api/landlord");
+  },
+
+  saveTenant: function(tenantData) {
+    return axios.post("/api/tenant", tenantData);
+  },
+
+  getTenant: function() {
+    return axios.get("/api/tenant");
   }
 };
