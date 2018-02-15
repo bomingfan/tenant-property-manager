@@ -1,7 +1,15 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "password": "coding123",
+=======
+    "password": "password",
+>>>>>>> b4e7dec18fc1ab3d13827c6a0476ffd05214239a
+=======
     "password": "19831030",
+>>>>>>> 6e1eb3986522159c55731181c840dc6583d5eaf2
     "database": "property",
     "host": "127.0.0.1",
     "dialect": "mysql"
