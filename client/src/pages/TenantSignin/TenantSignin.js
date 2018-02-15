@@ -24,7 +24,6 @@ class TenantSignin extends React.Component {
             <div>
                 <h1><b><center>Tenant Property Manager</center></b></h1>
                 <Container>
-                    <form>
                         <Row>
                             <Col s={3} />
                             <Input s={5} label="Enter Your Email" validate><Icon>email</Icon>
@@ -32,9 +31,6 @@ class TenantSignin extends React.Component {
                             </Input>
                         </Row>
 
-                    </form>
-
-                    <form>
                         <Row>
                             <Col s={3} />
                             <Input s={5} label="Enter Your Password"
@@ -43,20 +39,14 @@ class TenantSignin extends React.Component {
 
                         </Row>
 
-                    </form>
-
-                    <form>
                         <Row>
                             <button class="btn waves-effect waves-light" type="login" name="action">Login</button>
                         </Row>
-                    </form>
 
-                    <form>
                         <a href="/tsignup">Create Tenant Account</a>
                         <br>
                         </br>
                         <a href="/lsignup">Create Landlord Account</a>
-                    </form>
 
 
                 </Container>
