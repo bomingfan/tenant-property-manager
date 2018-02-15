@@ -85,7 +85,7 @@ const jwtMW = exjwt({
   //   }
   // });
 
-  app.get("/", jwtMW,  (req, res) => {
+  app.get("/success", jwtMW,  (req, res) => {
 //Sending some response when authenticated
     res.send('You are authenticated'); 
 });
