@@ -4,7 +4,7 @@ import Footer from '../../components/Footer';
 import { Container, Row, Col, Slider } from 'react-materialize';
 import { Icon, Input, Navbar, NavItem, Card, Slide, Button } from 'react-materialize';
 
-class TestSignin extends React.Component {
+class TestSignin extends Component {
 
     render() {
         return (
@@ -15,12 +15,12 @@ class TestSignin extends React.Component {
 
                     <Row>
         <Col m={6} s={6}>    
-        <Button left waves='light'>Tenant<Icon right>arrow_forward</Icon></Button>
+        <Button left waves='light' node='a' href="/tlogin">Tenant<Icon right>arrow_forward</Icon></Button>
         
         </Col>
 
         <Col m={6} s={6}>   
-        <Button right waves='light'>Landlord<Icon right>arrow_forward</Icon></Button>
+        <Button right waves='light' node='a' href="/llogin">Landlord<Icon right>arrow_forward</Icon></Button>
 </Col>
 
          </Row>
