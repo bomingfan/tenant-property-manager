@@ -13,16 +13,23 @@ class TenantMain extends React.Component {
             <div>
                 <Container>
                     <Row>
-                        <Navbar right>
-                            <NavItem href='Read-Me.html'>How the App Works</NavItem>
+                        <Navbar s={3} right>
+                            <NavItem href='Read-Me.html'>App Help</NavItem>
                             <NavItem href='sign-out.html'>Sign Out</NavItem>
                         </Navbar>
 
                         <Navbar left>
+<<<<<<< HEAD
                             <NavItem href='/'><Icon>homeHOME</Icon></NavItem>
                             <NavItem href='rent-reminder.html'><Icon>attach_moneyRENT</Icon></NavItem>
                             <NavItem href='create-repair.html'><Icon>createCREATE TICKET</Icon></NavItem>
                             <NavItem href='view-repair.html'><Icon>view_listVIEW TICKETS</Icon></NavItem>
+=======
+                            <NavItem href='/'><Icon left={true}>home</Icon>Home</NavItem>
+                            <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent</NavItem>
+                            <NavItem href='create-repair.html'><Icon left={true}>create</Icon>Create Ticket</NavItem>
+                            <NavItem href='view-repair.html'><Icon left={true}>view_list</Icon>View Tickets</NavItem>
+>>>>>>> 3f19ffd4516598a0967b77ec4d13525f398c1465
                         </Navbar>
                     </Row>
 
