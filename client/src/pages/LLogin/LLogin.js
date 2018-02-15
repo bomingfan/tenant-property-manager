@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-materialize';
-import { Icon, Input} from 'react-materialize';
+import { Icon, Input, Button} from 'react-materialize';
 import AuthService from '../../components/AuthService.js';
 
 
@@ -15,7 +15,7 @@ class LLogin extends React.Component {
 
     componentWillMount() {
         if (this.Auth.loggedIn())
-            this.props.history.replace('/');
+            this.props.history.replace('/tmain');
     }
 
     handleChange(e) {
@@ -31,7 +31,7 @@ class LLogin extends React.Component {
         this.Auth.login(this.state.email, this.state.password)
             .then(res => {
                 console.log(res);
-                this.props.history.replace('/');  
+                this.props.history.replace('/tmain');  
             })
             .catch(err => {
                 alert(err);
@@ -55,7 +55,7 @@ class LLogin extends React.Component {
 
                         <Row>
                             <Col s={3} />
-                            <Input s={5} label="Enter Your Password" validate
+                            <Input s={5} type='password' label="Enter Your Password" validate
                                 onChange={this.handleChange}
                                 name="password"
                             ><Icon>lock</Icon>
@@ -63,11 +63,7 @@ class LLogin extends React.Component {
                         </Row>
 
                         <Row>
-                            <input
-                                className="form-submit"
-                                value="SUBMIT"
-                                type="submit"
-                            />
+                        <Button waves='light'>Submit<Icon right>send</Icon></Button>
                         </Row>
 
                         <a href="/tsignup">Create Tenant Account</a>

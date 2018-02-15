@@ -14,6 +14,7 @@ export default class AuthService {
         return this.fetch(`${this.domain}/llogin`, {
             method: 'POST',
             body: JSON.stringify({
+                
                 email: username,
                 password: password
             })

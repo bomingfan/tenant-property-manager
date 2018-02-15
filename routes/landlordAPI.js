@@ -30,12 +30,15 @@ const jwtMW = exjwt({
 
   // POST route for landlord login
   app.post("/llogin", function (req, res) {
-    console.log(req.body);
     db.Landlord.findOne({
       where: {
         email: req.body.email
       }
     }).then(function (data) {
+      // if user not found, return authentication failed.
+      if(!data) {
+        res.status(401).json({ message: 'Authentication failed. User not found.' });
+      } else 
       // we are comparing the plain text password 
       // with the hashsed password here
       bcrypt.compare(req.body.password, data.password, function (err, result) {
@@ -48,10 +51,10 @@ const jwtMW = exjwt({
         } else {
           // otherwise let the client know
           // that they have a bad password
-          res.status(400).json({ err: "Password Doesn't Match", success: false, token: null })
+          res.status(400).json({ message: "Password Doesn't Match", success: false, token: null })
         }
       });
-    }).catch(err => res.status(400).json(false));
+    })
   });
 
   // app.use(function(req, res, next) {
@@ -85,19 +88,19 @@ const jwtMW = exjwt({
   //   }
   // });
 
-  app.get("/success", jwtMW,  (req, res) => {
-//Sending some response when authenticated
-    res.send('You are authenticated'); 
-});
+//   app.get("/success", jwtMW,  (req, res) => {
+// //Sending some response when authenticated
+//     res.send('You are authenticated'); 
+// });
 
-// Error handling 
-app.use(function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') { // Send the error rather than to show it on the console
-      res.status(401).send(err);
-  }
-  else {
-      next(err);
-  }
-});
+// // Error handling 
+// app.use(function (err, req, res, next) {
+//   if (err.name === 'UnauthorizedError') { // Send the error rather than to show it on the console
+//       res.status(401).send(err);
+//   }
+//   else {
+//       next(err);
+//   }
+// });
 
 }

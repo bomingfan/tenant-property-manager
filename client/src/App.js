@@ -20,7 +20,6 @@ class App extends Component {
           <Route exact path="/lsignup" component={LandlordSignup} />
           <Route exact path="/tsignin" component={TenantSignin} />
           <Route exact path="/llogin" component={LLogin} />
-          <Route exact path="/" component={TenantMain} />
           <Route exact path="/tmain" component={TenantMain} />
           <Route exact path="/lmain" component={LandlordMain} />
         </Switch>
