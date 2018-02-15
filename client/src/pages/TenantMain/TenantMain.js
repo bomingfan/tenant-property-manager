@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import "./TenantMain.css";
 import Footer from '../../components/Footer';
-import AuthService from '../../components/AuthService';
-import withAuth from '../../components/withAuth';
+import TAuthService from '../../components/TAuthService';
+import TwithAuth from '../../components/TwithAuth';
 import { Container, Row, Col, Slider } from 'react-materialize';
 import { Icon, Input, Navbar, NavItem, Card, Slide } from 'react-materialize';
 
-const Auth = new AuthService();
+const Auth = new TAuthService();
 
 class TenantMain extends Component {
     
     handleLogout(){
         Auth.logout()
-        this.props.history.replace('/llogin');
+        this.props.history.replace('/tlogin');
      }
 
     render() {
@@ -78,4 +78,4 @@ class TenantMain extends Component {
     }
 }
 
-export default withAuth(TenantMain);
+export default TwithAuth(TenantMain);

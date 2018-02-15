@@ -33,7 +33,7 @@ export default function TwithAuth(TAuthComponent) {
         render() {
             if (this.state.user) {
                 return (
-                    <AuthComponent history={this.props.history} user={this.state.user} />
+                    <TAuthComponent history={this.props.history} user={this.state.user} />
                 )
             }
             else {
