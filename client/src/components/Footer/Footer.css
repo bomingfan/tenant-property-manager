@@ -18,4 +18,11 @@ img {
     font-size: 22px;
     padding-bottom: 8px;
 }
+
+footer {
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+}
       
