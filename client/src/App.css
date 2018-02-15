@@ -2,9 +2,10 @@ nav{
     box-shadow: none;
     background-color: lightslategray;
 }
-a{
+nav ul a{
     background-color: rgba(72, 160, 163, 0.795);
 }
+
 .page-footer{
     background-color: lightslategray;
 
@@ -12,4 +13,12 @@ a{
 
 body{
     background-color: lightgray;
+}
+
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons{
+   
+    font-size: 18px;
+    font-style: normal;
+  
 }

@@ -5,6 +5,7 @@ import LandlordSignup from "./pages/LandlordSignup";
 import TenantSignin from "./pages/TenantSignin";
 import LLogin from "./pages/LLogin";
 import TenantMain from "./pages/TenantMain";
+import LandlordMain from "./pages/LandlordMain";
 import './App.css';
 
 
@@ -20,6 +21,8 @@ class App extends Component {
           <Route exact path="/tsignin" component={TenantSignin} />
           <Route exact path="/llogin" component={LLogin} />
           <Route exact path="/" component={TenantMain} />
+          <Route exact path="/tmain" component={TenantMain} />
+          <Route exact path="/lmain" component={LandlordMain} />
         </Switch>
       </div>
     </Router>
