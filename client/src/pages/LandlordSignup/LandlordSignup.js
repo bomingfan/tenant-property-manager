@@ -48,7 +48,6 @@ class LandlordSignup extends React.Component {
                         </Col>
                         <Col s={4} />
                     </Row>
-                    <form>
 
                         <Row>
                             <Input s={6} label="First Name" validate
@@ -56,6 +55,7 @@ class LandlordSignup extends React.Component {
                                 onChange={this.handleInputChange}
                                 name="firstname"
                             ><Icon>account_circle</Icon></Input>
+
                             <Input s={6} label="Last Name" validate
                                 value={this.state.lastname}
                                 onChange={this.handleInputChange}
@@ -69,6 +69,7 @@ class LandlordSignup extends React.Component {
                                 onChange={this.handleInputChange}
                                 name="email"
                             ><Icon>email</Icon></Input>
+
                             <Input s={6} label="Address" validate
                                 value={this.state.address}
                                 onChange={this.handleInputChange}
@@ -81,6 +82,7 @@ class LandlordSignup extends React.Component {
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                                 name="password"
+                                type = "password"
                             ><Icon>enhanced_encryption</Icon></Input>
 
                         </Row>
@@ -90,7 +92,6 @@ class LandlordSignup extends React.Component {
                             >Submit<Icon right>send</Icon>
                             </Button>
                         </Row>
-                    </form>
                 </Container>
                 <Footer />
             </div>

@@ -1,21 +1,28 @@
 import React, { Component } from "react";
 import "./TenantMain.css";
 import Footer from '../../components/Footer';
+import TAuthService from '../../components/TAuthService';
+import TwithAuth from '../../components/TwithAuth';
 import { Container, Row, Col, Slider } from 'react-materialize';
 import { Icon, Input, Navbar, NavItem, Card, Slide } from 'react-materialize';
 
-class TenantMain extends React.Component {
+const Auth = new TAuthService();
 
-
+class TenantMain extends Component {
+    
+    handleLogout(){
+        Auth.logout()
+        this.props.history.replace('/tlogin');
+     }
 
     render() {
         return (
             <div>
                 <Container>
                     <Row>
-                        <Navbar s={3} right>
-                            <NavItem href='Read-Me.html'>App Help</NavItem>
-                            <NavItem href='sign-out.html'>Sign Out</NavItem>
+                        <Navbar right>
+                            <NavItem href='Read-Me.html'>{this.props.user.email}</NavItem>
+                            <NavItem type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</NavItem>
                         </Navbar>
 
                         <Navbar left>
@@ -28,7 +35,7 @@ class TenantMain extends React.Component {
 
                     <Row>
                         <Col m={6} s={6}>
-                            <Card className='blue-grey darken-5' textClassName='white-text' title='Upcoming Payments' actions={[<a href='rent-reminder.html'>Link To Rent</a>]}>
+                            <Card className='blue-grey darken-5' textClassName='white-text' title='Upcoming Payments' actions={[<a key='rent-reminder' href='rent-reminder.html'>Link To Rent</a>]}>
                                 View your upcoming rent due.
 		                    </Card>
                         </Col>
@@ -71,4 +78,4 @@ class TenantMain extends React.Component {
     }
 }
 
-export default TenantMain;
+export default TwithAuth(TenantMain);
