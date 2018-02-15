@@ -23,7 +23,8 @@ class App extends Component {
           <Route exact path="/tlogin" component={TLogin} />
           <Route exact path="/tmain" component={TenantMain} />
           <Route exact path="/lmain" component={LandlordMain} />
-          <Route exact path="/testsignin" component={TestSignin} />
+          <Route exact path="/" component={TestSignin} />
+         
         </Switch>
       </div>
     </Router>
