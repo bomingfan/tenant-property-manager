@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import "./LandlordMain.css";
 import Footer from '../../components/Footer';
+import AuthService from '../../components/AuthService';
+import withAuth from '../../components/withAuth';
 import { Container, Row, Col, Slider } from 'react-materialize';
 import { Icon, Input, Navbar, NavItem, Card, Slide } from 'react-materialize';
 
-class LandlordMain extends React.Component {
+const Auth = new AuthService();
+
+class LandlordMain extends Component {
+
+    handleLogout(){
+        Auth.logout()
+        this.props.history.replace('/llogin');
+     }
 
     render() {
         return (
@@ -12,8 +21,8 @@ class LandlordMain extends React.Component {
                 <Container>
                     <Row>                        
                         <Navbar s={3} right>
-                            <NavItem href='Read-Me.html'>App Help</NavItem>
-                            <NavItem href='sign-out.html'>Sign Out</NavItem>
+                        <NavItem href='Read-Me.html'>{this.props.user.email}</NavItem>
+                        <NavItem type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</NavItem>
                         </Navbar>
                        
                         <Navbar s={9} left>
@@ -65,4 +74,4 @@ class LandlordMain extends React.Component {
     }
 }
 
-export default LandlordMain;
+export default withAuth(LandlordMain);
