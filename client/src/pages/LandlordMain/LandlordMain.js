@@ -3,8 +3,8 @@ import "./LandlordMain.css";
 import Footer from '../../components/Footer';
 import AuthService from '../../components/AuthService';
 import withAuth from '../../components/withAuth';
-import { Container, Row, Col, Slider } from 'react-materialize';
-import { Icon, Input, Navbar, NavItem, Card, Slide } from 'react-materialize';
+import { Container, Row, Slider } from 'react-materialize';
+import { Icon, Input, Navbar, NavItem, Slide } from 'react-materialize';
 
 const Auth = new AuthService();
 
@@ -47,7 +47,7 @@ class LandlordMain extends Component {
                     </Row>
 
                     <Row>
-                        <Slider >
+                        <Slider options={{fullscreen: false}}>
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
                                 title="Welcome Landlord!" placement="left">
