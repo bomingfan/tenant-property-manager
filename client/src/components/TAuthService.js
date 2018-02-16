@@ -11,7 +11,7 @@ export default class TAuthService {
 
     login(username, password) {
         // Get a token from api server using the fetch api
-        return this.fetch(`${this.domain}/tlogin`, {
+        return this.fetch(`/tlogin`, {
             method: 'POST',
             body: JSON.stringify({
                 
