@@ -17,10 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get("/", function(res, res) {
-  res.sendFile(path.join(__dirname, "./test/test.html"))
-});
-
 // Routes
 // =============================================================
 require("./routes/landlordAPI.js")(app);
