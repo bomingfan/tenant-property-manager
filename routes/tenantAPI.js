@@ -46,8 +46,8 @@ const jwtMW = exjwt({
         if (result) {
           // then issue a token to the user 
           // with a message
-          let token = jwt.sign({ email: data.email, id: data.id}, 'Tenant Rocks', { expiresIn: 24 * 60 * 60 } );
-          res.json({successs: true, token: token});
+          let token = jwt.sign({ email: data.email, id: data.id, landlord: false}, 'Tenant Rocks', { expiresIn: 24 * 60 * 60 } );
+          res.json({successs: true, token: token, user: data});
         } else {
           // otherwise let the client know
           // that they have a bad password

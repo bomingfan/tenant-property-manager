@@ -2,7 +2,7 @@ import decode from 'jwt-decode';
 
 export default class TAuthService {
     // Initializing important variables
-    constructor(domain) {
+    constructor() {
         // this.domain = domain || 'https://communitysteward.herokuapp.com' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
