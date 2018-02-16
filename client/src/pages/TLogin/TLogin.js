@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input, Button} from 'react-materialize';
-import TAuthService from '../../components/TAuthService.js';
+import TAuthService from '../../components/TAuthService.js';    
+import { Link } from "react-router-dom";
 
 
 class TLogin extends React.Component {
@@ -71,10 +72,10 @@ class TLogin extends React.Component {
                         <Button waves='light'>Submit<Icon right>send</Icon></Button>
                         </Row>
 
-                        <a href="/tsignup">Create Tenant Account</a>
+                        <Link to="/tsignup">Create Tenant Account</Link>
                         <br>
                         </br>
-                        <a href="/lsignup">Create Landlord Account</a>
+                        <Link to="/lsignup">Create Landlord Account</Link>
                     </form>
 
 
