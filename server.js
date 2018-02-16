@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 const app = express();
+require('dotenv').config();
 
 // Requiring our models for syncing
 const db = require("./models");
@@ -17,14 +18,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get("/", function(res, res) {
-  res.sendFile(path.join(__dirname, "./test/test.html"))
-});
-
 // Routes
 // =============================================================
 require("./routes/landlordAPI.js")(app);
 require("./routes/tenantAPI.js")(app);
+require("./routes/ticketAPI.js")(app);
 
 // Send every request to the React app
 // Define any API routes before this runs

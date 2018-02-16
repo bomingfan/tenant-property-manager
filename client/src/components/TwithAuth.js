@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import TAuthService from './TAuthService';
 
 export default function TwithAuth(TAuthComponent) {
-    const Auth = new TAuthService('http://localhost:3000');
-    return class AuthWrapped extends Component {
+    const Auth = new TAuthService();
+    return class TAuthWrapped extends Component {
 
         constructor() {
             super();
