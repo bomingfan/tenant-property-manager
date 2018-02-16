@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 
 export default function withAuth(AuthComponent) {
-    const Auth = new AuthService('https://localhost:3000');
+    const Auth = new AuthService();
     return class AuthWrapped extends Component {
 
         constructor() {
@@ -22,6 +22,7 @@ export default function withAuth(AuthComponent) {
                     this.setState({
                         user: profile
                     })
+                    console.log(this.state.user);
                 }
                 catch(err){
                     Auth.logout()
