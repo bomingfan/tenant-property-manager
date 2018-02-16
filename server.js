@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 const app = express();
+require('dotenv').config();
 
 // Requiring our models for syncing
 const db = require("./models");
