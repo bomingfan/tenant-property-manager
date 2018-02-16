@@ -57,50 +57,5 @@ const jwtMW = exjwt({
     })
   });
 
-  // app.use(function(req, res, next) {
-
-  //   // check header or url parameters or post parameters for token
-  //   const token = req.body.token || req.query.token || req.headers['x-access-token'];
-  
-  //   // decode token
-  //   if (token) {
-  
-  //     // verifies secret and checks exp
-  //     jwt.verify(token, 'secret', function(err, decoded) {      
-  //       if (err) {
-  //         return res.json({ success: false, message: 'Failed to authenticate token.' });    
-  //       } else {
-  //         // if everything is good, save to request for use in other routes
-  //         req.decoded = decoded;    
-  //         next();
-  //       }
-  //     });
-  
-  //   } else {
-  
-  //     // if there is no token
-  //     // return an error
-  //     return res.status(403).send({ 
-  //         success: false, 
-  //         message: 'No token provided.' 
-  //     });
-  
-  //   }
-  // });
-
-//   app.get("/success", jwtMW,  (req, res) => {
-// //Sending some response when authenticated
-//     res.send('You are authenticated'); 
-// });
-
-// // Error handling 
-// app.use(function (err, req, res, next) {
-//   if (err.name === 'UnauthorizedError') { // Send the error rather than to show it on the console
-//       res.status(401).send(err);
-//   }
-//   else {
-//       next(err);
-//   }
-// });
 
 }
