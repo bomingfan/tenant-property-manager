@@ -3,7 +3,7 @@ import TAuthService from './TAuthService';
 
 export default function TwithAuth(TAuthComponent) {
     const Auth = new TAuthService('http://localhost:3000');
-    return class AuthWrapped extends Component {
+    return class TAuthWrapped extends Component {
 
         constructor() {
             super();

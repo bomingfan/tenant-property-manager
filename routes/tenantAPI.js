@@ -46,7 +46,7 @@ const jwtMW = exjwt({
         if (result) {
           // then issue a token to the user 
           // with a message
-          let token = jwt.sign({ email: data.email }, 'Tenant Rocks', { expiresIn: 24 * 60 * 60 } );
+          let token = jwt.sign({ email: data.email, id: data.id}, 'Tenant Rocks', { expiresIn: 24 * 60 * 60 } );
           res.json({successs: true, token: token});
         } else {
           // otherwise let the client know
@@ -56,5 +56,16 @@ const jwtMW = exjwt({
       });
     })
   });
+
+  // app.get("/api/tenant/:email", function (req, res){
+  //   db.Tenant.findOne({
+  //     where: {
+
+  //     }
+  //   })
+
+  // })
+
+  
 
 }

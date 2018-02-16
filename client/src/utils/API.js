@@ -28,7 +28,11 @@ export default {
     return axios.post("/tenant/new", tenantData);
   },
 
-  getTenant: function() {
-    return axios.get("/api/tenant");
-  }
+  getTicket: function(id) {
+    return axios.get("/ticket/:id")
+  },
+
+  saveTicket: function(ticketData) {
+    return axios.post("/ticket/new", ticketData);
+  },
 };

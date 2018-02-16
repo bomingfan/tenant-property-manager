@@ -8,7 +8,11 @@ nav ul a{
 
 .page-footer{
     background-color: lightslategray;
+}
 
+.collapsible-header {
+    background-color: lightslategray;
+    color: white;
 }
 
 body{

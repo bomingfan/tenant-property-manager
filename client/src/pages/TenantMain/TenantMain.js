@@ -4,16 +4,48 @@ import Footer from '../../components/Footer';
 import TAuthService from '../../components/TAuthService';
 import TwithAuth from '../../components/TwithAuth';
 import { Container, Row, Col, Slider } from 'react-materialize';
-import { Icon, Input, Navbar, NavItem, Card, Slide } from 'react-materialize';
+import { Icon, Input, Navbar, NavItem, Card, Slide, Modal, Button, Collapsible, CollapsibleItem } from 'react-materialize';
+import API from "./../../utils/API";
 
 const Auth = new TAuthService();
 
 class TenantMain extends Component {
-    
-    handleLogout(){
+
+    constructor() {
+        super();
+        this.handleChange = this.handleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
+
+    // componentDidMount() {
+    //     const id = API.getTenantID(this.props.user.email);
+    //     console.log(id)
+    // }
+
+    handleLogout() {
         Auth.logout()
         this.props.history.replace('/tlogin');
-     }
+    }
+
+    handleChange(e) {
+        this.setState(
+            {
+                [e.target.name]: e.target.value
+            }
+        )
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+        API.saveTicket({
+            title: this.state.title,
+            body: this.state.body,
+            TenantId: parseInt(this.props.user.id)
+        })
+            .then(res => alert("Note '" + res.data.title + "' Saved"))
+            .catch(err => console.log(err));
+    };
+
 
     render() {
         return (
@@ -28,23 +60,51 @@ class TenantMain extends Component {
                         <Navbar left>
                             <NavItem href='/'><Icon left={true}>home</Icon>Home</NavItem>
                             <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent</NavItem>
-                            <NavItem href='create-repair.html'><Icon left={true}>create</Icon>Create Ticket</NavItem>
+
+                            <Modal
+                                header='Modal Header'
+                                trigger={<NavItem><Icon left={true}>create</Icon>Create Ticket</NavItem>}>
+                                <form onSubmit={this.handleFormSubmit}>
+                                    <Input label="Title" validate
+                                        onChange={this.handleChange}
+                                        name="title"
+                                    >
+                                    </Input>
+                                    <div className="input-field col s12">
+                                        <textarea className="materialize-textarea"
+                                            onChange={this.handleChange}
+                                            name="body"
+                                        ></textarea>
+                                        <label>Body</label>
+                                    </div>
+                                    <Button waves='light'>Submit<Icon right>send</Icon></Button>
+                                </form>
+                            </Modal>
+
                             <NavItem href='view-repair.html'><Icon left={true}>view_list</Icon>View Tickets</NavItem>
                         </Navbar>
                     </Row>
 
                     <Row>
-                        <Col m={6} s={6}>
+                        <Col s={6}>
                             <Card className='blue-grey darken-5' textClassName='white-text' title='Upcoming Payments' actions={[<a key='rent-reminder' href='rent-reminder.html'>Link To Rent</a>]}>
                                 View your upcoming rent due.
 		                    </Card>
                         </Col>
 
-                        <Input m={6} s={6} type='select' label='Submit A Ticket Request' icon='format_paint' defaultValue='1'>
-                            <option value='1'>Repair Ticket</option>
-                            <option value='2'>Cleaning Ticket</option>
-                            <option value='3'>Rent Ticket</option>
-                        </Input>
+                        <Col s={6}>
+                        <Collapsible>
+                            <CollapsibleItem header='First' icon='filter_drama'>
+                                Lorem ipsum dolor sit amet.
+	                        </CollapsibleItem>
+                            <CollapsibleItem header='Second' icon='place'>
+                                Lorem ipsum dolor sit amet.
+	                        </CollapsibleItem>
+                            <CollapsibleItem header='Third' icon='whatshot'>
+                                Lorem ipsum dolor sit amet.
+	                        </CollapsibleItem>
+                        </Collapsible>
+                        </Col>
                     </Row>
 
                     <Row>
