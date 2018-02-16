@@ -35,13 +35,7 @@ module.exports = function(sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-
-        isTenent: {
-            type: DataTypes.BOOLEAN,
-            default: true
         }
- 
     });
 
     Tenant.beforeCreate(function(model, options){
