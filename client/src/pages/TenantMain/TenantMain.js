@@ -128,10 +128,10 @@ class TenantMain extends Component {
 	                    </Slide>
                         </Slider>
                     </Row>
-
+                    <Footer />
                 </Container>
 
-                <Footer />
+                
             </div>
 
         )
