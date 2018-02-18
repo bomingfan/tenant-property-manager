@@ -75,7 +75,7 @@ class TenantSignup extends React.Component {
                         </Col>
                         <Col s={4} />
                     </Row>
-<form>
+                    <form>
                     <Row>
                         <Input s={6} label="First Name" validate
                         onChange = {this.handleChange}
@@ -126,9 +126,8 @@ class TenantSignup extends React.Component {
                                 <Icon right>send</Icon>
                         </Button>
                     </Row>
-</form>
-
-<Row>
+                       </form>
+                    <Row>
                         <Button node='a' href='/' waves='light'>Go to Home Page<Icon right>home</Icon></Button>
                     </Row>
                 </Container>

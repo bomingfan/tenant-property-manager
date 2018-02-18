@@ -39,4 +39,8 @@ export default {
   saveBulletin: function(bData) {
     return axios.post("/bulletin/new", bData);
   },
+
+  getBulletin: function(id) {
+    return  axios.get("/api/bulletin/" + id)
+  }
 };

@@ -18,8 +18,7 @@ class TenantMain extends Component {
     } 
 
     // componentDidMount() {
-    //     const id = API.getTenantID(this.props.user.email);
-    //     console.log(id)
+    //     API.getBulletin()
     // }
 
     handleLogout() {
