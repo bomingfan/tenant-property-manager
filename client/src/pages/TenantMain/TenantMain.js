@@ -14,8 +14,8 @@ class TenantMain extends Component {
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    }
+        this.handleTicketCreate = this.handleTicketCreate.bind(this);
+    } 
 
     // componentDidMount() {
     //     const id = API.getTenantID(this.props.user.email);
@@ -35,16 +35,18 @@ class TenantMain extends Component {
         )
     }
 
-    handleFormSubmit(e) {
+    handleTicketCreate(e) {
         e.preventDefault();
         API.saveTicket({
             title: this.state.title,
             body: this.state.body,
-            TenantId: parseInt(this.props.user.id)
+            TenantId: Number.parseInt(this.props.user.id, 10)
         })
             .then(res => alert("Note '" + res.data.title + "' Saved"))
             .catch(err => console.log(err));
     };
+
+
 
 
     render() {
@@ -62,9 +64,10 @@ class TenantMain extends Component {
                             <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent</NavItem>
 
                             <Modal
-                                header='Modal Header'
+                                id="foo"
+                                header='Create Ticket'
                                 trigger={<NavItem><Icon left={true}>create</Icon>Create Ticket</NavItem>}>
-                                <form onSubmit={this.handleFormSubmit}>
+                                <form onSubmit={this.handleTicketCreate}>
                                     <Input label="Title" validate
                                         onChange={this.handleChange}
                                         name="title"
@@ -111,7 +114,7 @@ class TenantMain extends Component {
                         <Slider >
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
-                                title="Welcome Tenant!" placement="left">
+                                title={`Welcome ${this.props.user.email}`} placement="left">
                                 This is your Apartment Management Portal.
 	                        </Slide>
                             <Slide

@@ -75,7 +75,7 @@ class TLogin extends React.Component {
                         
                         <br>
                         </br>
-                        <a href="/tsignup">Create Tenant Account</a>
+                        <Link to="/tsignup">Create Tenant Account</Link>
                     </form>
 
 
