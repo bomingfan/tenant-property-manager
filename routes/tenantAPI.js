@@ -16,6 +16,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/landlord", function(req, res) {
+    db.Landlord.findAll().then(function(dbLandlord){
+      res.json(dbLandlord);
+    })
+  })
+
     // See the react auth blog in which cors is required for access
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001');
@@ -46,8 +52,8 @@ const jwtMW = exjwt({
         if (result) {
           // then issue a token to the user 
           // with a message
-          let token = jwt.sign({ email: data.email, id: data.id, landlord: false}, 'Tenant Rocks', { expiresIn: 24 * 60 * 60 } );
-          res.json({successs: true, token: token, user: data});
+          let token = jwt.sign({ email: data.email, id: data.id}, 'Tenant Rocks', { expiresIn: 24 * 60 * 60 } );
+          res.json({successs: true, token: token});
         } else {
           // otherwise let the client know
           // that they have a bad password
