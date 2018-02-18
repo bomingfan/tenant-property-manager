@@ -30,8 +30,8 @@ class LandlordSignup extends React.Component {
             email: this.state.email,
             password: this.state.password,
             address: this.state.address
-        })
-            .then(res => console.log(res))
+        }).then(res => alert("Registration Succesful! Please Login..."))
+            .then(res => {this.props.history.replace("/llogin")})
             .catch(err => console.log(err));
     };
 
@@ -48,7 +48,7 @@ class LandlordSignup extends React.Component {
                         </Col>
                         <Col s={4} />
                     </Row>
-
+<form>
                         <Row>
                             <Input s={6} label="First Name" validate
                                 value={this.state.firstname}
@@ -92,6 +92,11 @@ class LandlordSignup extends React.Component {
                             >Submit<Icon right>send</Icon>
                             </Button>
                         </Row>
+                        </form>
+
+                        <Row>
+                        <Button node='a' href='/' waves='light'>Go to Home Page<Icon right>home</Icon></Button>
+                    </Row>
                 </Container>
                 <Footer />
             </div>

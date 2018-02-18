@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 require("./routes/landlordAPI.js")(app);
 require("./routes/tenantAPI.js")(app);
 require("./routes/ticketAPI.js")(app);
+require("./routes/bulletinAPI.js")(app);
 
 // Send every request to the React app
 // Define any API routes before this runs

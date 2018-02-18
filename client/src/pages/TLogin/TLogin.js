@@ -73,11 +73,16 @@ class TLogin extends React.Component {
                         </Row>
 
                         
-                        <br>
-                        </br>
-                        <Link to="/tsignup">Create Tenant Account</Link>
+                        
                     </form>
-
+                    
+                    <Row>
+                    <Link to="/tsignup">Create Tenant Account</Link>
+                    </Row>
+                    
+                    <Row>
+                        <Button node='a' href='/' waves='light'>Go to Home Page<Icon right>home</Icon></Button>
+                    </Row>
 
                 </Container>
             </div>

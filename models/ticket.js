@@ -2,17 +2,11 @@ module.exports = function(sequelize, DataTypes) {
     var Ticket = sequelize.define("Ticket", {
       title: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+        allowNull: false
       },
       body: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+        allowNull: false
       }
     });
 

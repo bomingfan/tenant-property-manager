@@ -29,7 +29,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-                isEmail: true
+                isEmail: {
+                    msg: "Email address must be valid"
+                }
             }
         },
  
@@ -57,6 +59,14 @@ module.exports = function(sequelize, DataTypes) {
           onDelete: "cascade"
         });
       };
+
+    // Landlord.associate = function(models) {
+    //     // Associating Landlord with Tenant
+    //     // When a Landlord is deleted, also delete any associated Bulletin
+    //     Landlord.hasMany(models.Bulletin, {
+    //       onDelete: "cascade"
+    //     });
+    //   };
 
     return Landlord;
  

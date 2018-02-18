@@ -4,16 +4,43 @@ import Footer from '../../components/Footer';
 import AuthService from '../../components/AuthService';
 import withAuth from '../../components/withAuth';
 import { Container, Row, Slider } from 'react-materialize';
-import { Icon, Input, Navbar, NavItem, Slide } from 'react-materialize';
+import { Icon, Input, Navbar, NavItem, Slide, Modal, Button } from 'react-materialize';
+import API from "./../../utils/API";
+
 
 const Auth = new AuthService();
 
 class LandlordMain extends Component {
 
+    constructor() {
+        super();
+        this.handleChange = this.handleChange.bind(this);
+        this.handleBulletinCreate = this.handleBulletinCreate.bind(this);
+    } 
+
     handleLogout(){
         Auth.logout()
         this.props.history.replace('/llogin');
      }
+
+     handleChange(e) {
+        this.setState(
+            {
+                [e.target.name]: e.target.value
+            }
+        )
+    }
+
+    handleBulletinCreate(e) {
+        e.preventDefault();
+        API.saveBulletin({
+            title: this.state.title,
+            body: this.state.body,
+            LandlordId: Number.parseInt(this.props.user.id, 10)
+        })
+            .then(res => alert("Bulletin '" + res.data.title + "' Saved"))
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
@@ -28,7 +55,28 @@ class LandlordMain extends Component {
                         <Navbar s={9} left>
                         <NavItem href='/'><Icon left={true}>home </Icon>Home</NavItem>
                             <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent Reminder</NavItem>
-                            <NavItem href='create-repair.html'><Icon left={true}>announcement</Icon> Announcements</NavItem>
+                            
+                            <Modal
+                                header='New Bulletin'
+                                trigger={<NavItem><Icon left={true}>announcement</Icon>Bulletin</NavItem>}>
+                                <form onSubmit={this.handleBulletinCreate}>
+                                    <Input label="Title" validate
+                                        onChange={this.handleChange}
+                                        name="title"
+                                    >
+                                    </Input>
+                                    <div className="input-field col s12">
+                                        <textarea className="materialize-textarea"
+                                            onChange={this.handleChange}
+                                            name="body"
+                                        ></textarea>
+                                        <label>Body</label>
+                                    </div>
+                                    <Button waves='light'>Submit<Icon right>send</Icon></Button>
+                                </form>
+                            </Modal>
+
+                            
                             <NavItem href='view-repair.html'><Icon left={true}>view_list</Icon>Repair Tickets</NavItem>
                         </Navbar>                      
                     </Row>

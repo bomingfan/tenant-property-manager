@@ -55,7 +55,8 @@ class TenantSignup extends React.Component {
             address: this.state.address,
             LandlordId: Number.parseInt(this.state.lID, 10)
         })
-            .then(res => console.log(res))
+            .then(res => alert("Registration Succesful! Please Login..."))
+            .then(res => {this.props.history.replace("/tlogin")})
             .catch(err => console.log(err));
     };
 
@@ -126,6 +127,10 @@ class TenantSignup extends React.Component {
                         </Button>
                     </Row>
 </form>
+
+<Row>
+                        <Button node='a' href='/' waves='light'>Go to Home Page<Icon right>home</Icon></Button>
+                    </Row>
                 </Container>
                 <Footer />
             </div>

@@ -2,17 +2,11 @@ module.exports = function(sequelize, DataTypes) {
     var Bulletin = sequelize.define("Bulletin", {
       title: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+        allowNull: false
       },
       body: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+        allowNull: false
       }
     });
 

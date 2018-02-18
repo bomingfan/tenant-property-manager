@@ -64,7 +64,6 @@ class TenantMain extends Component {
                             <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent</NavItem>
 
                             <Modal
-                                id="foo"
                                 header='Create Ticket'
                                 trigger={<NavItem><Icon left={true}>create</Icon>Create Ticket</NavItem>}>
                                 <form onSubmit={this.handleTicketCreate}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-materialize';
 import { Icon, Input, Button} from 'react-materialize';
 import AuthService from '../../components/AuthService.js';
+import { Link } from "react-router-dom";
 
 
 class LLogin extends React.Component {
@@ -71,11 +72,18 @@ class LLogin extends React.Component {
                         <Button waves='light'>Submit<Icon right>send</Icon></Button>
                         </Row>
 
-                        
-                        <br>
-                        </br>
-                        <a href="/lsignup">Create Landlord Account</a>
                     </form>
+
+                    <Row>
+                    <Link to="/lsignup">Create Landlord Account</Link>
+                    </Row>
+                    
+                    <Row>
+                        <Button node='a' href='/' waves='light'>Go to Home Page<Icon right>home</Icon></Button>
+                    </Row>
+
+
+
 
 
                 </Container>

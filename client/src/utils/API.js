@@ -35,4 +35,8 @@ export default {
   saveTicket: function(ticketData) {
     return axios.post("/ticket/new", ticketData);
   },
+
+  saveBulletin: function(bData) {
+    return axios.post("/bulletin/new", bData);
+  },
 };
