@@ -55,7 +55,8 @@ class TenantSignup extends React.Component {
             address: this.state.address,
             LandlordId: Number.parseInt(this.state.lID, 10)
         })
-            .then(res => console.log(res))
+            .then(res => alert("Registration Succesful! Please Login..."))
+            .then(res => {this.props.history.replace("/tlogin")})
             .catch(err => console.log(err));
     };
 
@@ -74,7 +75,7 @@ class TenantSignup extends React.Component {
                         </Col>
                         <Col s={4} />
                     </Row>
-<form>
+                    <form>
                     <Row>
                         <Input s={6} label="First Name" validate
                         onChange = {this.handleChange}
@@ -125,7 +126,10 @@ class TenantSignup extends React.Component {
                                 <Icon right>send</Icon>
                         </Button>
                     </Row>
-</form>
+                       </form>
+                    <Row>
+                        <Button node='a' href='/' waves='light'>Go to Home Page<Icon right>home</Icon></Button>
+                    </Row>
                 </Container>
                 <Footer />
             </div>

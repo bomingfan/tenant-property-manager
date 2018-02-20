@@ -35,4 +35,10 @@ export default {
   saveTicket: function(ticketData) {
     return axios.post("/ticket/new", ticketData);
   },
+
+  saveProperty: function(pData) {
+    return axios.post("/property/new", pData);
+  }
+
+
 };

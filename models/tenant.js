@@ -20,8 +20,8 @@ module.exports = function(sequelize, DataTypes) {
             notEmpty: true
         },
  
-        address: {
-            type: DataTypes.TEXT,
+        cellphone: {
+            type: DataTypes.STRING,
             notEmpty: true
         },
  
@@ -29,7 +29,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-                isEmail: true
+                isEmail: {
+                    msg: "Email address must be valid"
+                }
             }
         },
  
@@ -54,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
         // A Post can't be created without a landlord due to the foreign key constraint
         Tenant.belongsTo(models.Landlord, {
           foreignKey: {
-            allowNull: false
+              allowNull: false
           }
         });
       };
