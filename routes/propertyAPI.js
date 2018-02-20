@@ -6,9 +6,9 @@ const db = require("../models");
 module.exports = function(app) {
 
   // POST route for saving a new tenant
-  app.post("/bulletin/new", function(req, res) {
-    db.Bulletin.create(req.body)
-    .then(dbBulletin => res.json(dbBulletin))
+  app.post("/property/new", function(req, res) {
+    db.Property.create(req.body)
+    .then(dbProperty => res.json(dbProperty))
     .catch(err => res.status(422).json(err));
   })
 

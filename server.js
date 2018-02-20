@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 require("./routes/landlordAPI.js")(app);
 require("./routes/tenantAPI.js")(app);
 require("./routes/ticketAPI.js")(app);
-require("./routes/bulletinAPI.js")(app);
+require("./routes/propertyAPI.js")(app);
 
 // Send every request to the React app
 // Define any API routes before this runs
@@ -33,7 +33,7 @@ app.get("*", function(req, res) {
 
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

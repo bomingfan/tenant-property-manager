@@ -36,11 +36,9 @@ export default {
     return axios.post("/ticket/new", ticketData);
   },
 
-  saveBulletin: function(bData) {
-    return axios.post("/bulletin/new", bData);
-  },
-
-  getBulletin: function(id) {
-    return  axios.get("/api/bulletin/" + id)
+  saveProperty: function(pData) {
+    return axios.post("/property/new", pData);
   }
+
+
 };

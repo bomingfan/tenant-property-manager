@@ -20,8 +20,8 @@ module.exports = function(sequelize, DataTypes) {
             notEmpty: true
         },
  
-        address: {
-            type: DataTypes.TEXT,
+        cellphone: {
+            type: DataTypes.STRING,
             notEmpty: true
         },
  

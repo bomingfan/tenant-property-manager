@@ -12,7 +12,7 @@ class LandlordSignup extends React.Component {
         lastname: "",
         email: "",
         password: "",
-        address: ""
+        cellphone: ""
     };
 
     handleInputChange = event => {
@@ -29,7 +29,7 @@ class LandlordSignup extends React.Component {
             lastname: this.state.lastname,
             email: this.state.email,
             password: this.state.password,
-            address: this.state.address
+            cellphone: this.state.cellphone
         }).then(res => alert("Registration Succesful! Please Login..."))
             .then(res => {this.props.history.replace("/llogin")})
             .catch(err => console.log(err));
@@ -70,10 +70,10 @@ class LandlordSignup extends React.Component {
                                 name="email"
                             ><Icon>email</Icon></Input>
 
-                            <Input s={6} label="Address" validate
-                                value={this.state.address}
+                            <Input s={6} label="Cell" validate
+                                value={this.state.cellphone}
                                 onChange={this.handleInputChange}
-                                name="address"
+                                name="cellphone"
                             ><Icon>home</Icon></Input>
                         </Row>
 

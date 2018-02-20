@@ -16,6 +16,7 @@ class LandlordMain extends Component {
         super();
         this.handleChange = this.handleChange.bind(this);
         this.handleBulletinCreate = this.handleBulletinCreate.bind(this);
+        this.addProperty = this.addProperty.bind(this);
     } 
 
     handleLogout(){
@@ -23,7 +24,7 @@ class LandlordMain extends Component {
         this.props.history.replace('/llogin');
      }
 
-     handleChange(e) {
+    handleChange(e) {
         this.setState(
             {
                 [e.target.name]: e.target.value
@@ -31,7 +32,27 @@ class LandlordMain extends Component {
         )
     }
 
-    handleBulletinCreate(e) {
+    addProperty(e) {
+        e.preventDefault();
+        API.saveProperty({
+            street: this.state.street,
+            unit: this.state.unit,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+            title1: this.state.title1,
+            body1: this.state.body1,
+            title2: this.state.title2,
+            body2: this.state.body2,
+            title3: this.state.title3,
+            body3: this.state.body3,
+            LandlordId: Number.parseInt(this.props.user.id, 10)
+        })
+        .then(res => alert("Property '" + res.data.street + "' Saved"))
+        .catch(err => console.log(err));
+    }
+
+    handleProperty(e) {
         e.preventDefault();
         API.saveBulletin({
             title: this.state.title,
@@ -53,12 +74,88 @@ class LandlordMain extends Component {
                         </Navbar>
                        
                         <Navbar s={9} left>
-                        <NavItem href='/'><Icon left={true}>home </Icon>Home</NavItem>
+                        <NavItem href='/'><Icon left={true}>home</Icon>Home</NavItem>
                             <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent Reminder</NavItem>
                             
                             <Modal
-                                header='New Bulletin'
-                                trigger={<NavItem><Icon left={true}>announcement</Icon>Bulletin</NavItem>}>
+                            header='New Property'
+                            trigger={<NavItem><Icon left={true}>home</Icon>Add a Property</NavItem>}>
+                            <form onSubmit={this.addProperty}>
+                            <Row>
+                                <Input s={10} label="Street" validate
+                                    onChange={this.handleChange}
+                                    name="street">
+                                </Input>
+                            
+                            
+                                <Input s={2} label="Unit/Apt No" validate
+                                    onChange={this.handleChange}
+                                    name="unit">
+                                </Input>
+                            </Row>
+                            <Row>
+                            
+                                <Input s={4} label="City" 
+                                    onChange={this.handleChange}
+                                    name="city">
+                                </Input>
+                          
+                                <Input s={4} label="State"
+                                    onChange={this.handleChange}
+                                    name="state">
+                                </Input>
+                             
+                                
+                                <Input s={4} label="Zip"
+                                    onChange={this.handleChange}
+                                    name="zip">
+                                </Input>
+                            </Row>
+
+                            <h4>Stuff Your Tenant Should Know:</h4>
+                            <Row>
+                                <Input s={2} label="Title"
+                                    onChange={this.handleChange}
+                                    name="title1">
+                                </Input>
+                     
+                        
+                                <Input s={10} label="Body"
+                                    onChange={this.handleChange}
+                                    name="body1">
+                                </Input>
+                            </Row>
+                            <Row>
+                                <Input s={2} label="Title"
+                                    onChange={this.handleChange}
+                                    name="title2">
+                                </Input>
+                     
+                        
+                                <Input s={10} label="Body"
+                                    onChange={this.handleChange}
+                                    name="body2">
+                                </Input>
+                            </Row>
+                            <Row>
+                                <Input s={2} label="Title"
+                                    onChange={this.handleChange}
+                                    name="title3">
+                                </Input>
+                     
+                        
+                                <Input s={10} label="Body"
+                                    onChange={this.handleChange}
+                                    name="body3">
+                                </Input>
+                            </Row>
+                                <Button waves='light'>Submit<Icon right>send</Icon></Button>
+                            </form>
+                        </Modal> 
+
+                            <Modal
+                                header='Bulletins'
+                                trigger={<NavItem><Icon left={true}>announcement</Icon>Bulletins</NavItem>}>
                                 <form onSubmit={this.handleBulletinCreate}>
                                     <Input label="Title" validate
                                         onChange={this.handleChange}
@@ -79,19 +176,6 @@ class LandlordMain extends Component {
                             
                             <NavItem href='view-repair.html'><Icon left={true}>view_list</Icon>Repair Tickets</NavItem>
                         </Navbar>                      
-                    </Row>
-                    <Row>
-                        <Input s={6} type='select' label='View Properties' icon='location_city' defaultValue='1'>
-                            <option value='1'>Property 1</option>
-                            <option value='2'>Property 2</option>
-                            <option value='3'>Property 3</option>
-                        </Input>
-
-                        <Input s={6} type='select' label='View Tenants' icon='people_outline' defaultValue='1'>
-                            <option value='1'>Tenant 1</option>
-                            <option value='2'>Tenant 2</option>
-                            <option value='3'>Tenant 3</option>
-                        </Input>
                     </Row>
 
                     <Row>

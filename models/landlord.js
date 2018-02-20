@@ -20,8 +20,8 @@ module.exports = function(sequelize, DataTypes) {
             notEmpty: true
         },
  
-        address: {
-            type: DataTypes.TEXT,
+        cellphone: {
+            type: DataTypes.STRING,
             notEmpty: true
         },
  
@@ -52,21 +52,15 @@ module.exports = function(sequelize, DataTypes) {
         });
       });
  
+    
+
     Landlord.associate = function(models) {
         // Associating Landlord with Tenant
-        // When a Landlord is deleted, also delete any associated Tenants
-        Landlord.hasMany(models.Tenant, {
+        // When a Landlord is deleted, also delete any associated Bulletin
+        Landlord.hasMany(models.Property, {
           onDelete: "cascade"
         });
       };
-
-    // Landlord.associate = function(models) {
-    //     // Associating Landlord with Tenant
-    //     // When a Landlord is deleted, also delete any associated Bulletin
-    //     Landlord.hasMany(models.Bulletin, {
-    //       onDelete: "cascade"
-    //     });
-    //   };
 
     return Landlord;
  
