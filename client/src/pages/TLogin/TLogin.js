@@ -1,7 +1,8 @@
 import React from 'react';
+import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'react-materialize';
-import { Icon, Input, Button} from 'react-materialize';
-import TAuthService from '../../components/TAuthService.js';    
+import { Icon, Input, Button,Carousel } from 'react-materialize';
+import TAuthService from '../../components/TAuthService.js';
 import { Link } from "react-router-dom";
 
 
@@ -32,11 +33,11 @@ class TLogin extends React.Component {
         this.Auth.login(this.state.email, this.state.password)
             .then(res => {
                 // console.log(res);
-                this.props.history.replace('/tmain'); 
+                this.props.history.replace('/tmain');
             })
             .catch(err => {
                 // console.log(err);
-                if(err.status === 401) {
+                if (err.status === 401) {
                     alert('Authentication failed. User not found.');
                 } if (err.status === 400) {
                     alert("Password Doesn't Match");
@@ -49,6 +50,13 @@ class TLogin extends React.Component {
             <div>
                 <h1><b><center>Tenant Property Manager</center></b></h1>
                 <Container>
+                <Carousel options={{ autoPlay: true }} images={[
+                        'https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg', 'http://www.jamesclarklaw.net/img/Spot/JamesClarkLawLandlordTenant.jpg'
+                        ,
+                        'https://seda.college/wp-content/uploads/landlord.jpg',
+                        'https://assets.tvm.com.mt/en/wp-content/uploads/sites/2/2017/10/dar-xiri-1.jpg',
+                        'http://www.smartcondomanagement.com/content/uploads/2014/10/TheLandlord_zpse246c3d1.jpg'
+                    ]} />
                     <form onSubmit={this.handleFormSubmit}>
                         <Row>
                             <Col s={3} />
@@ -69,9 +77,8 @@ class TLogin extends React.Component {
                         </Row>
 
                         <Row>
-                        <Button waves='light'>Submit<Icon right>send</Icon></Button>
+                            <Button waves='light'>Submit<Icon right>send</Icon></Button>
                         </Row>
-
                         
                         
                     </form>
@@ -85,6 +92,7 @@ class TLogin extends React.Component {
                     </Row>
 
                 </Container>
+                <Footer />
             </div>
         )
     }
