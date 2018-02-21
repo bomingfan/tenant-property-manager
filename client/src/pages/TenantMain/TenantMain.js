@@ -20,13 +20,15 @@ class TenantMain extends Component {
             bulletin2: null,
             bulletin3: null,
             ticket: [],
-            tId: null
+            tId: null,
+            pId: null,
         }
     }
 
     componentWillMount() {
         this.setState({
-            tId: Number.parseInt(this.props.user.id, 10)
+            tId: Number.parseInt(this.props.user.id, 10),
+            pId: Number.parseInt(this.props.user.pId, 10)
         })
         
     }
@@ -38,7 +40,7 @@ class TenantMain extends Component {
             setTimeout(this.props.history.replace('/tlogin'), 2000);
         }
         else {
-            API.getTProperty(this.state.tId)
+            API.getTProperty(this.state.pId)
                 .then(res => this.setState({
                     bulletin1: res.data.bulletin1,
                     bulletin2: res.data.bulletin2,
@@ -76,7 +78,7 @@ class TenantMain extends Component {
                 title: this.state.title,
                 body: this.state.body,
                 TenantId: this.state.tId,
-                LandlordId: Number.parseInt(res.data[0].id, 0)
+                LandlordId: Number.parseInt(res.data[0].id, 10)
             })
                 .then(res => alert("Ticket '" + res.data.title + "' Saved"))
                 .then(this.handleTicketGet())

@@ -106,7 +106,9 @@ class TenantSignup extends React.Component {
                         <Icon>enhanced_encryption</Icon>
                         </Input>
 
-                        <Input s={6} type='select' name = 'pId' label='Select Your Property' onChange={this.handleChange}>
+                        <Input s={6} type='select' name = 'pId' label='Select Your Property' onChange={this.handleChange}
+                         >
+                         <option>Choose Below</option>
                         {this.state.property.map(pp => (
                             <option 
                             value= {pp.id}
