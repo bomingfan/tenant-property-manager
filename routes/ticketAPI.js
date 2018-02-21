@@ -12,6 +12,15 @@ module.exports = function(app) {
     });
   });
 
-  
+  app.get("/ticket/:tId", function(req, res){
+    db.Ticket.findAll({where: {TenantId: req.params.tId}})
+    .then(dbTicket => res.json(dbTicket));
+  })
+
+  app.get("/landlord/ticket/:lId", function(req, res){
+    db.Ticket.findAll({
+      where: {LandlordId: req.params.lId}
+    }).then(dbTicket => res.json(dbTicket));
+  })
 
 }

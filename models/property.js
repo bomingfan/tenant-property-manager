@@ -20,33 +20,18 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      title1: {
+      bulletin1: {
         type: DataTypes.STRING,
         allowNull: true,
         defaultValue: null
       },
-      body1: {
+      bulletin2: {
         type: DataTypes.TEXT,
         allowNull: true,
         defaultValue: null
       },
-      title2: {
+      bulletin3: {
         type: DataTypes.STRING,
-        allowNull: true,
-        defaultValue: null
-      },
-      body2: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-        defaultValue: null
-      },
-      title3: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        defaultValue: null
-      },
-      body3: {
-        type: DataTypes.TEXT,
         allowNull: true,
         defaultValue: null
       }

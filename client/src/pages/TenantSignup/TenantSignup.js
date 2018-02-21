@@ -12,26 +12,25 @@ class TenantSignup extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.state = {
-            landlord: [],
+            property: [],
             fistname: "",
             lastname: "",
             email: "",
             password: "",
             address: "",
-            lID: null
+            pId: null
         }
     }
 
 
     componentDidMount() {
         // Request the landlords from API
-        API.getLandlord()
+        API.getProperty()
         .then(res => {
             this.setState({
-                landlord: res.data
+                property: res.data
             })
         });
-
     };
 
     handleChange(e) {
@@ -40,8 +39,6 @@ class TenantSignup extends React.Component {
                 [e.target.name]: e.target.value
             }
         )
-        console.log(e.target.value)
-       
     }
 
 
@@ -52,8 +49,8 @@ class TenantSignup extends React.Component {
             lastname: this.state.lastname,
             email: this.state.email,
             password: this.state.password,
-            address: this.state.address,
-            LandlordId: Number.parseInt(this.state.lID, 10)
+            cellphone: this.state.cellphone,
+            PropertyId: Number.parseInt(this.state.pId, 10)
         })
             .then(res => alert("Registration Succesful! Please Login..."))
             .then(res => {this.props.history.replace("/tlogin")})
@@ -94,9 +91,9 @@ class TenantSignup extends React.Component {
                         name = "email"
                         ><Icon>email</Icon></Input>
 
-                        <Input s={6} label="Address" validate
+                        <Input s={6} label="Cell" validate
                         onChange = {this.handleChange}
-                        name = "address"
+                        name = "cellphone"
                         ><Icon>home</Icon></Input>
                     </Row>
 
@@ -109,13 +106,13 @@ class TenantSignup extends React.Component {
                         <Icon>enhanced_encryption</Icon>
                         </Input>
 
-                        <Input s={6} type='select' name = 'lID' label='Select Your Landlord' onChange={this.handleChange}>
-                        {this.state.landlord.map(ll => (
+                        <Input s={6} type='select' name = 'pId' label='Select Your Property' onChange={this.handleChange}>
+                        {this.state.property.map(pp => (
                             <option 
-                            value= {ll.id}
-                            key={ll.id}
+                            value= {pp.id}
+                            key={pp.id}
                             >
-                            {ll.firstname}
+                            {pp.street}
                             </option>
                         ))}
                         </Input>
