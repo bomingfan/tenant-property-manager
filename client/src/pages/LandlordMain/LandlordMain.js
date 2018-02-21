@@ -4,7 +4,7 @@ import Footer from '../../components/Footer';
 import AuthService from '../../components/AuthService';
 import withAuth from '../../components/withAuth';
 import { Container, Row, Slider } from 'react-materialize';
-import { Icon, Input, Navbar, NavItem, Slide, Modal, Button } from 'react-materialize';
+import { Icon, Input, Navbar, NavItem, Slide, Modal, Button, Collection, CollectionItem, Table } from 'react-materialize';
 import API from "./../../utils/API";
 
 
@@ -15,9 +15,24 @@ class LandlordMain extends Component {
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
-        this.handleBulletinCreate = this.handleBulletinCreate.bind(this);
+        this.handleProperty = this.handleProperty.bind(this);
         this.addProperty = this.addProperty.bind(this);
+        this.state = {
+            lId: null,
+            property:[],
+            ticket:[]
+        }
     } 
+     
+    componentDidMount() {
+        this.setState({
+            lId: Number.parseInt(this.props.user.id, 10)
+        });
+        API.getLTicket(Number.parseInt(this.props.user.id, 10))
+        .then(res => this.setState({
+            ticket: res.data
+        }))
+    }
 
     handleLogout(){
         Auth.logout()
@@ -40,13 +55,10 @@ class LandlordMain extends Component {
             city: this.state.city,
             state: this.state.state,
             zip: this.state.zip,
-            title1: this.state.title1,
-            body1: this.state.body1,
-            title2: this.state.title2,
-            body2: this.state.body2,
-            title3: this.state.title3,
-            body3: this.state.body3,
-            LandlordId: Number.parseInt(this.props.user.id, 10)
+            bulletin1: this.state.bulletin1,
+            bulletin2: this.state.bulletin2,
+            bulletin3: this.state.bulletin3,
+            LandlordId: this.state.lId
         })
         .then(res => alert("Property '" + res.data.street + "' Saved"))
         .catch(err => console.log(err));
@@ -54,14 +66,21 @@ class LandlordMain extends Component {
 
     handleProperty(e) {
         e.preventDefault();
-        API.saveBulletin({
-            title: this.state.title,
-            body: this.state.body,
-            LandlordId: Number.parseInt(this.props.user.id, 10)
+        API.showProperty(this.state.lId)
+            .then(res => {
+            this.setState({
+                property: res.data
+            })
         })
-            .then(res => alert("Bulletin '" + res.data.title + "' Saved"))
+            .then(err => console.log(this.state.property))
             .catch(err => console.log(err));
     };
+
+    // handleBulletinChange(e) {
+    //     e.preventDefault();
+    //     API.changeBulltin()
+
+    // }
 
     render() {
         return (
@@ -86,26 +105,20 @@ class LandlordMain extends Component {
                                     onChange={this.handleChange}
                                     name="street">
                                 </Input>
-                            
-                            
                                 <Input s={2} label="Unit/Apt No" validate
                                     onChange={this.handleChange}
                                     name="unit">
                                 </Input>
                             </Row>
                             <Row>
-                            
                                 <Input s={4} label="City" 
                                     onChange={this.handleChange}
                                     name="city">
                                 </Input>
-                          
                                 <Input s={4} label="State"
                                     onChange={this.handleChange}
                                     name="state">
                                 </Input>
-                             
-                                
                                 <Input s={4} label="Zip"
                                     onChange={this.handleChange}
                                     name="zip">
@@ -114,68 +127,86 @@ class LandlordMain extends Component {
 
                             <h4>Stuff Your Tenant Should Know:</h4>
                             <Row>
-                                <Input s={2} label="Title"
+                                <Input s={12} label="Utilites?"
                                     onChange={this.handleChange}
-                                    name="title1">
+                                    name="bulletin1">
                                 </Input>
-                     
-                        
-                                <Input s={10} label="Body"
+                                <Input s={12} label="Amenities?"
                                     onChange={this.handleChange}
-                                    name="body1">
+                                    name="bulletin2">
                                 </Input>
-                            </Row>
-                            <Row>
-                                <Input s={2} label="Title"
+                                <Input s={12} label="Miscellaneous..."
                                     onChange={this.handleChange}
-                                    name="title2">
-                                </Input>
-                     
-                        
-                                <Input s={10} label="Body"
-                                    onChange={this.handleChange}
-                                    name="body2">
+                                    name="bulletin3">
                                 </Input>
                             </Row>
-                            <Row>
-                                <Input s={2} label="Title"
-                                    onChange={this.handleChange}
-                                    name="title3">
-                                </Input>
-                     
-                        
-                                <Input s={10} label="Body"
-                                    onChange={this.handleChange}
-                                    name="body3">
-                                </Input>
-                            </Row>
+
                                 <Button waves='light'>Submit<Icon right>send</Icon></Button>
                             </form>
                         </Modal> 
 
-                            <Modal
-                                header='Bulletins'
-                                trigger={<NavItem><Icon left={true}>announcement</Icon>Bulletins</NavItem>}>
-                                <form onSubmit={this.handleBulletinCreate}>
-                                    <Input label="Title" validate
-                                        onChange={this.handleChange}
-                                        name="title"
-                                    >
-                                    </Input>
-                                    <div className="input-field col s12">
-                                        <textarea className="materialize-textarea"
-                                            onChange={this.handleChange}
-                                            name="body"
-                                        ></textarea>
-                                        <label>Body</label>
-                                    </div>
-                                    <Button waves='light'>Submit<Icon right>send</Icon></Button>
-                                </form>
-                            </Modal>
+                       <NavItem onClick={this.handleProperty}><Icon left={true}>announcement</Icon>Show Properties</NavItem>
+                    
+                    
+                    <Modal
+                    header='View Tickets'
+                    trigger={<NavItem><Icon left={true}>view_list</Icon>Repair Tickets</NavItem>}>
+                        <Table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>Solved?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {this.state.ticket.map(ticket => (
+                            <tr key={ticket.id}>
+                                <td>{ticket.title}</td>
+                                <td>{ticket.body}</td>
+                                <td><Input name='group1' type='checkbox' label='Solved' className='filled-in' defaultChecked='checked' />
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                        </Table>
+                    
+                </Modal>    
+                    
+                    </Navbar>                      
+                    </Row>
 
-                            
-                            <NavItem href='view-repair.html'><Icon left={true}>view_list</Icon>Repair Tickets</NavItem>
-                        </Navbar>                      
+                    <Row>
+                    {this.state.property.map(property => 
+                        <Collection key = {property.id}
+                        header={`${property.street} #${property.unit}, ${property.city}, ${property.state} ${property.zip}`}
+                        >
+                        {property.bulletin1 ? (
+                            <CollectionItem>{property.bulletin1}</CollectionItem>
+                        ) : (
+                            <CollectionItem>No Content</CollectionItem>
+                        )}
+                        {property.bulletin2 ? (
+                            <CollectionItem>{property.bulletin2}</CollectionItem>
+                        ) : (
+                            <CollectionItem>No Content</CollectionItem>
+                        )}
+                        
+                        {property.bulletin3 ? (
+                            <CollectionItem>{property.bulletin3}
+                            <a href="#!" className="secondary-content"><Icon>clear</Icon></a>
+                            <a href="#!" className="secondary-content"><Icon>edit</Icon></a>
+                            </CollectionItem>
+                        ) : (
+                            <CollectionItem>No Content
+                            <a href="#!" className="secondary-content"><Icon>clear</Icon></a>
+                            <a href="#!" className="secondary-content"><Icon>edit</Icon></a>
+                            </CollectionItem>
+                        )}
+                        </Collection>
+                    )}
+
+
                     </Row>
 
                     <Row>
@@ -196,7 +227,7 @@ class LandlordMain extends Component {
                                 title="Let's get started"
                                 placement="left">
                                 Just use the menus above.
-	                    </Slide>
+	                        </Slide>
                         </Slider>
                     </Row>
                 </Container>

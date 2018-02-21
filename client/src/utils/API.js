@@ -19,17 +19,21 @@ export default {
     return axios.post("/landlord/new", landlordData);
   },
 
-  // Return landlords for use
-  getLandlord: function() {
-    return axios.get("/api/landlord");
+  // Return property for use
+  getProperty: function(propertyData) {
+    return axios.get("/api/property", propertyData);
   },
 
   saveTenant: function(tenantData) {
     return axios.post("/tenant/new", tenantData);
   },
 
-  getTicket: function(id) {
-    return axios.get("/ticket/:id")
+  getTicket: function(tId) {
+    return axios.get(`/ticket/${tId}`);
+  },
+
+  getLTicket:function(lId) {
+    return axios.get(`/landlord/ticket/${lId}`)
   },
 
   saveTicket: function(ticketData) {
@@ -38,7 +42,21 @@ export default {
 
   saveProperty: function(pData) {
     return axios.post("/property/new", pData);
+  },
+
+  showProperty: function(lId) {
+    return axios.get(`/property/${lId}`);
+  },
+
+  getTProperty: function(id) {
+    return axios.get(`/tproperty/${id}`);
+  },
+
+  changeBulltin: function(id) {
+    return axios.put(`/property/${id}`);
+  },
+
+  getLId: function(tId) {
+    return axios.get(`/findll/${tId}`);
   }
-
-
 };

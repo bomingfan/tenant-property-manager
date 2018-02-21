@@ -26,7 +26,7 @@ class SignIn extends Component {
                             <h5>Tenant</h5>
                             <h6>Find everything you need to track your apartment and communicate with your landlord.</h6>
                             <br></br>
-                            <Button left waves='light' node='a' href="/tlogin">Tenant<Icon right>arrow_forward</Icon></Button>
+                            <Button left="true" waves='light' node='a' href="/tlogin">Tenant<Icon right>arrow_forward</Icon></Button>
 
                         </Col>
 
@@ -34,7 +34,7 @@ class SignIn extends Component {
                             <h5>Landlord</h5>
                             <h6>Find everything you need to manage your units and communicate with your tenants.</h6>
                             <br></br>
-                            <Button right waves='light' node='a' href="/llogin">Landlord<Icon right>arrow_forward</Icon></Button>
+                            <Button right="true" waves='light' node='a' href="/llogin">Landlord<Icon right>arrow_forward</Icon></Button>
                         </Col>
                     </Row>
                 </Container>

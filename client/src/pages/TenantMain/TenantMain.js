@@ -4,7 +4,7 @@ import Footer from '../../components/Footer';
 import TAuthService from '../../components/TAuthService';
 import TwithAuth from '../../components/TwithAuth';
 import { Container, Row, Col, Slider } from 'react-materialize';
-import { Icon, Input, Navbar, NavItem, Card, Slide, Modal, Button, Collapsible, CollapsibleItem } from 'react-materialize';
+import { Icon, Input, Navbar, NavItem, Card, Slide, Modal, Button, Collapsible, CollapsibleItem, Table } from 'react-materialize';
 import API from "./../../utils/API";
 
 const Auth = new TAuthService();
@@ -15,11 +15,45 @@ class TenantMain extends Component {
         super();
         this.handleChange = this.handleChange.bind(this);
         this.handleTicketCreate = this.handleTicketCreate.bind(this);
-    } 
+        this.state = {
+            bulletin1: null,
+            bulletin2: null,
+            bulletin3: null,
+            ticket: [],
+            tId: null
+        }
+    }
 
-    // componentDidMount() {
-    //     API.getBulletin()
-    // }
+    componentWillMount() {
+        this.setState({
+            tId: Number.parseInt(this.props.user.id, 10)
+        })
+        
+    }
+
+    componentDidMount() {
+        
+        if (!Auth.loggedIn()) {
+            alert("Token Expired, Please login again");
+            setTimeout(this.props.history.replace('/tlogin'), 2000);
+        }
+        else {
+            API.getTProperty(this.state.tId)
+                .then(res => this.setState({
+                    bulletin1: res.data.bulletin1,
+                    bulletin2: res.data.bulletin2,
+                    bulletin3: res.data.bulletin3
+                })
+            )
+            API.getTicket(this.state.tId)
+                .then(res => {
+                    this.setState({
+                        ticket: res.data
+                    })
+                })
+                
+        } 
+    }
 
     handleLogout() {
         Auth.logout()
@@ -36,14 +70,27 @@ class TenantMain extends Component {
 
     handleTicketCreate(e) {
         e.preventDefault();
-        API.saveTicket({
-            title: this.state.title,
-            body: this.state.body,
-            TenantId: Number.parseInt(this.props.user.id, 10)
-        })
-            .then(res => alert("Note '" + res.data.title + "' Saved"))
-            .catch(err => console.log(err));
+        API.getLId(this.state.tId)
+        .then(res => 
+            API.saveTicket({
+                title: this.state.title,
+                body: this.state.body,
+                TenantId: this.state.tId,
+                LandlordId: Number.parseInt(res.data[0].id, 0)
+            })
+                .then(res => alert("Ticket '" + res.data.title + "' Saved"))
+                .catch(err => console.log(err))
+        )
     };
+
+    handleTicketGet(e) {
+        e.preventDefault();
+        API.getTicket(this.state.tId)
+        .then(res => this.setState({
+            ticket: res.data
+        }))
+        .then(console.log(this.state.ticket))
+    }
 
 
 
@@ -82,7 +129,31 @@ class TenantMain extends Component {
                                 </form>
                             </Modal>
 
-                            <NavItem href='view-repair.html'><Icon left={true}>view_list</Icon>View Tickets</NavItem>
+                            <Modal
+                                header='View Tickets'
+                                trigger={<NavItem><Icon left={true}>view_list</Icon>View Tickets</NavItem>}>
+                                    <Table>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Content</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {this.state.ticket.map(ticket => (
+                                        <tr key={ticket.id}>
+                                            <td>{ticket.title}</td>
+                                            <td>{ticket.body}</td>
+                                            <td><Button>Delete</Button></td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                    </Table>
+                                
+                            </Modal>
+
+                            
                         </Navbar>
                     </Row>
 
@@ -95,14 +166,14 @@ class TenantMain extends Component {
 
                         <Col s={6}>
                         <Collapsible>
-                            <CollapsibleItem header='First' icon='filter_drama'>
-                                Lorem ipsum dolor sit amet.
+                            <CollapsibleItem header='Utilties' icon='filter_drama'>
+                            {this.state.bulletin1 ? (this.state.bulletin1) : ("No Content")}
 	                        </CollapsibleItem>
-                            <CollapsibleItem header='Second' icon='place'>
-                                Lorem ipsum dolor sit amet.
+                            <CollapsibleItem header='Amenities' icon='place'>
+                            {this.state.bulletin2 ? (this.state.bulletin2) : ("No Content")}
 	                        </CollapsibleItem>
-                            <CollapsibleItem header='Third' icon='whatshot'>
-                                Lorem ipsum dolor sit amet.
+                            <CollapsibleItem header='Misc.' icon='whatshot'>
+                            {this.state.bulletin3 ? (this.state.bulletin3) : ("No Content")}
 	                        </CollapsibleItem>
                         </Collapsible>
                         </Col>
@@ -112,7 +183,7 @@ class TenantMain extends Component {
                         <Slider >
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
-                                title={`Welcome ${this.props.user.email}`} placement="left">
+                                title={`Welcome ${this.props.user.firstname}`} placement="left">
                                 This is your Apartment Management Portal.
 	                        </Slide>
                             <Slide
