@@ -34,10 +34,12 @@ class LandlordMain extends Component {
         }))
     }
 
-    handleLogout(){
+    }
+
+    handleLogout() {
         Auth.logout()
         this.props.history.replace('/llogin');
-     }
+    }
 
     handleChange(e) {
         this.setState(
@@ -60,8 +62,8 @@ class LandlordMain extends Component {
             bulletin3: this.state.bulletin3,
             LandlordId: this.state.lId
         })
-        .then(res => alert("Property '" + res.data.street + "' Saved"))
-        .catch(err => console.log(err));
+            .then(res => alert("Property '" + res.data.street + "' Saved"))
+            .catch(err => console.log(err));
     }
 
     handleProperty(e) {
@@ -86,16 +88,16 @@ class LandlordMain extends Component {
         return (
             <div>
                 <Container>
-                    <Row>                        
+                    <Row>
                         <Navbar s={3} right>
-                        <NavItem href='Read-Me.html'>{this.props.user.email}</NavItem>
-                        <NavItem type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</NavItem>
+                            <NavItem href='Read-Me.html'>{this.props.user.email}</NavItem>
+                            <NavItem type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</NavItem>
                         </Navbar>
-                       
+
                         <Navbar s={9} left>
-                        <NavItem href='/'><Icon left={true}>home</Icon>Home</NavItem>
+                            <NavItem href='/'><Icon left={true}>home</Icon>Home</NavItem>
                             <NavItem href='rent-reminder.html'><Icon left={true}>attach_money</Icon>Rent Reminder</NavItem>
-                            
+
                             <Modal
                             header='New Property'
                             trigger={<NavItem><Icon left={true}>home</Icon>Add a Property</NavItem>}>
@@ -210,24 +212,24 @@ class LandlordMain extends Component {
                     </Row>
 
                     <Row>
-                        <Slider options={{fullscreen: false}}>
+                        <Slider options={{ fullscreen: false }}>
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
-                                title="Welcome Landlord!" placement="left">
-                                This is your Property Management Portal.
+                                title={<p>Welcome Landlord!</p>} placement="left">
+                                <p>This is your Property Management Portal.</p>
 	                        </Slide>
                             <Slide
                                 src="http://www.smartcondomanagement.com/content/uploads/2014/10/TheLandlord_zpse246c3d1.jpg"
-                                title="Access all your properties and tenants in one place!"
+                                title={<p>Access all your properties and tenants in one place!</p>}
                                 placement="left">
-                                Communicating with tenants has never been easier!
+                                <p>Communicating with tenants has never been easier!</p>
 	                        </Slide>
                             <Slide
                                 src="https://seda.college/wp-content/uploads/landlord.jpg"
-                                title="Let's get started"
+                                title={<p>Let's get started</p>}
                                 placement="left">
-                                Just use the menus above.
-	                        </Slide>
+                                <p>Just use the menus above.</p>
+	                    </Slide>
                         </Slider>
                     </Row>
                 </Container>
