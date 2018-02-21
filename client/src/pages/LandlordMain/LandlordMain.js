@@ -17,6 +17,7 @@ class LandlordMain extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleBulletinCreate = this.handleBulletinCreate.bind(this);
         this.addProperty = this.addProperty.bind(this);
+
     }
 
     handleLogout() {
