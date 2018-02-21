@@ -24,12 +24,12 @@ class TenantMain extends Component {
         }
     }
 
-    componentWillMount() {
-        this.setState({
-            tId: Number.parseInt(this.props.user.id, 10)
-        })
+    // componentWillMount() {
+    //     this.setState({
+    //         tId: Number.parseInt(this.props.user.id, 10)
+    //     })
         
-    }
+    // }
 
     componentDidMount() {
         
@@ -38,14 +38,14 @@ class TenantMain extends Component {
             setTimeout(this.props.history.replace('/tlogin'), 2000);
         }
         else {
-            API.getTProperty(this.state.tId)
+            API.getTProperty(Number.parseInt(this.props.user.id, 10))
                 .then(res => this.setState({
                     bulletin1: res.data.bulletin1,
                     bulletin2: res.data.bulletin2,
                     bulletin3: res.data.bulletin3
                 })
             )
-            API.getTicket(this.state.tId)
+            API.getTicket(Number.parseInt(this.props.user.id, 10))
                 .then(res => {
                     this.setState({
                         ticket: res.data
@@ -70,13 +70,13 @@ class TenantMain extends Component {
 
     handleTicketCreate(e) {
         e.preventDefault();
-        API.getLId(this.state.tId)
+        API.getLId(Number.parseInt(this.props.user.id, 10))
         .then(res => 
             API.saveTicket({
                 title: this.state.title,
                 body: this.state.body,
-                TenantId: this.state.tId,
-                LandlordId: Number.parseInt(res.data[0].id, 0)
+                TenantId: Number.parseInt(this.props.user.id, 10),
+                LandlordId: Number.parseInt(res.data[0].id, 10)
             })
                 .then(res => alert("Ticket '" + res.data.title + "' Saved"))
                 .catch(err => console.log(err))
@@ -85,7 +85,7 @@ class TenantMain extends Component {
 
     handleTicketGet(e) {
         e.preventDefault();
-        API.getTicket(this.state.tId)
+        API.getTicket(Number.parseInt(this.props.user.id, 10))
         .then(res => this.setState({
             ticket: res.data
         }))
