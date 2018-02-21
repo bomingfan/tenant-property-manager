@@ -112,20 +112,20 @@ class TenantMain extends Component {
                         <Slider >
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
-                                title={`Welcome ${this.props.user.email}`} placement="left">
-                                This is your Apartment Management Portal.
+                                title={<p>Welcome {this.props.user.email}</p>} placement="left">
+                                <p>This is your Apartment Management Portal.</p>
 	                        </Slide>
                             <Slide
                                 src="http://www.jamesclarklaw.net/img/Spot/JamesClarkLawLandlordTenant.jpg"
-                                title="Access your apartment and landlord in one place!"
+                                title={<p>Access your apartment and landlord in one place!</p>}
                                 placement="left">
-                                Communicating with your landlord has never been easier!
+                                <p>Communicating with your landlord has never been easier!</p>
 	                        </Slide>
                             <Slide
                                 src="https://assets.tvm.com.mt/en/wp-content/uploads/sites/2/2017/10/dar-xiri-1.jpg"
-                                title="Let's get started"
+                                title={<p>Let's get started.</p>}
                                 placement="left">
-                                Just use the menus above.
+                                <p>Just use the menus above.</p>
 	                    </Slide>
                         </Slider>
                     </Row>
