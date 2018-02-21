@@ -191,7 +191,7 @@ class TenantMain extends Component {
                     </Row>
 
                     <Row>
-                        <Slider >
+                        <Slider interval={2000}>
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
                                 title={<p>Welcome {this.props.user.firstname}</p>} placement="left">

@@ -211,7 +211,7 @@ class LandlordMain extends Component {
                     </Row>
 
                     <Row>
-                        <Slider options={{ fullscreen: false }}>
+                        <Slider interval={2000}>
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
                                 title={<p>Welcome Landlord!</p>} placement="left">
