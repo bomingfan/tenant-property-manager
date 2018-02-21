@@ -81,18 +81,25 @@ class TenantMain extends Component {
                 LandlordId: Number.parseInt(res.data[0].id, 10)
             })
                 .then(res => alert("Ticket '" + res.data.title + "' Saved"))
+                .then(this.handleTicketGet())
                 .catch(err => console.log(err))
         )
     };
 
-    handleTicketGet(e) {
-        e.preventDefault();
+    handleTicketGet() {
         API.getTicket(this.state.tId)
         .then(res => this.setState({
             ticket: res.data
         }))
         .then(console.log(this.state.ticket))
-    }
+    };
+
+    handleTicketDelete = params => {
+        console.log(params);
+        API.deleteTicket(params)
+        .then(alert("Ticket deleted!"))
+        .then(this.handleTicketGet())
+    };
 
 
 
@@ -147,7 +154,9 @@ class TenantMain extends Component {
                                         <tr key={ticket.id}>
                                             <td>{ticket.title}</td>
                                             <td>{ticket.body}</td>
-                                            <td><Button>Delete</Button></td>
+                                            <td><Button 
+                                            name={ticket.id}
+                                            onClick={() => this.handleTicketDelete(ticket.id)}>Delete</Button></td>
                                         </tr>
                                     ))}
                                     </tbody>

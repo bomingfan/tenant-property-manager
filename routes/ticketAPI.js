@@ -23,4 +23,10 @@ module.exports = function(app) {
     }).then(dbTicket => res.json(dbTicket));
   })
 
+  app.delete("/ticket/:id", function(req, res){
+    db.Ticket.destroy({
+      where: {id: req.params.id}
+    }).then(dbTicket => res.json(dbTicket));
+  })
+
 }
