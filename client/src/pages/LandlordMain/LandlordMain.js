@@ -34,7 +34,6 @@ class LandlordMain extends Component {
         }))
     }
 
-    }
 
     handleLogout() {
         Auth.logout()
