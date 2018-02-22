@@ -165,7 +165,7 @@ class LandlordMain extends Component {
                             <tr key={ticket.id}>
                                 <td>{ticket.title}</td>
                                 <td>{ticket.body}</td>
-                                <td><Input name='group1' type='checkbox' label='Solved' className='filled-in' defaultChecked='checked' />
+                                <td><Input name='group1' type='checkbox' label='Solved' className='filled-in' />
                                 </td>
                             </tr>
                         ))}
@@ -214,18 +214,18 @@ class LandlordMain extends Component {
                         <Slider interval={2000}>
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
-                                title={<p>Welcome Landlord!</p>} placement="left">
+                                title={`Welcome ${this.props.user.firstname}`} placement="left">
                                 <p>This is your Property Management Portal.</p>
 	                        </Slide>
                             <Slide
                                 src="http://www.smartcondomanagement.com/content/uploads/2014/10/TheLandlord_zpse246c3d1.jpg"
-                                title={<p>Access all your properties and tenants in one place!</p>}
+                                title="Access all your properties and tenants in one place!"
                                 placement="left">
                                 <p>Communicating with tenants has never been easier!</p>
 	                        </Slide>
                             <Slide
                                 src="https://seda.college/wp-content/uploads/landlord.jpg"
-                                title={<p>Let's get started</p>}
+                                title="Let's get started"
                                 placement="left">
                                 <p>Just use the menus above.</p>
 	                    </Slide>

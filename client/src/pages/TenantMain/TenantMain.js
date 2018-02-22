@@ -72,15 +72,15 @@ class TenantMain extends Component {
 
     handleTicketCreate(e) {
         e.preventDefault();
-        API.getLId(this.state.tId)
-        .then(res => 
+        API.getLId(this.state.pId)
+        .then(res =>  
             API.saveTicket({
                 title: this.state.title,
                 body: this.state.body,
                 TenantId: this.state.tId,
-                LandlordId: Number.parseInt(res.data[0].id, 10)
+                LandlordId: Number.parseInt(res.data.LandlordId, 10)
             })
-                .then(res => alert("Ticket '" + res.data.title + "' Saved"))
+                .then(resp => alert("Ticket '" + resp.data.title + "' Saved"))
                 .then(this.handleTicketGet())
                 .catch(err => console.log(err))
         )
@@ -194,18 +194,18 @@ class TenantMain extends Component {
                         <Slider interval={2000}>
                             <Slide
                                 src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1DAAAAJDQxODRmNjkwLTg4YTQtNDIzNy05ZTdhLTMyOGY1YTQyZGY5Mg.jpg"
-                                title={<p>Welcome {this.props.user.firstname}</p>} placement="left">
+                                title={`Welcome ${this.props.user.firstname}`} placement="left">
                                 <p>This is your Apartment Management Portal.</p>
 	                        </Slide>
                             <Slide
                                 src="http://www.jamesclarklaw.net/img/Spot/JamesClarkLawLandlordTenant.jpg"
-                                title={<p>Access your apartment and landlord in one place!</p>}
+                                title="Access your apartment and landlord in one place!"
                                 placement="left">
                                 <p>Communicating with your landlord has never been easier!</p>
 	                        </Slide>
                             <Slide
                                 src="https://assets.tvm.com.mt/en/wp-content/uploads/sites/2/2017/10/dar-xiri-1.jpg"
-                                title={<p>Let's get started.</p>}
+                                title="Let's get started."
                                 placement="left">
                                 <p>Just use the menus above.</p>
 	                    </Slide>

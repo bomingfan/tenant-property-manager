@@ -56,8 +56,8 @@ export default {
     return axios.put(`/property/${id}`);
   },
 
-  getLId: function(tId) {
-    return axios.get(`/findll/${tId}`);
+  getLId: function(pId) {
+    return axios.get(`/findll/${pId}`);
   },
 
   deleteTicket: function(id) {
