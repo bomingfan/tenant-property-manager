@@ -4,7 +4,7 @@ import Footer from '../../components/Footer';
 import AuthService from '../../components/AuthService';
 import withAuth from '../../components/withAuth';
 import { Container, Row, Slider } from 'react-materialize';
-import { Icon, Input, Navbar, NavItem, Slide, Modal, Button, Collection, CollectionItem, Table } from 'react-materialize';
+import { Icon, Input, Navbar, NavItem, Slide, Modal, Button, Collection, CollectionItem, Table, Badge } from 'react-materialize';
 import API from "./../../utils/API";
 
 
@@ -151,7 +151,7 @@ class LandlordMain extends Component {
                     
                     <Modal
                     header='View Tickets'
-                    trigger={<NavItem><Icon left={true}>view_list</Icon>Repair Tickets</NavItem>}>
+                    trigger={<NavItem><Icon left={true}>view_list</Icon>Repair Tickets<Badge newIcon>{this.state.ticket.length}</Badge></NavItem>}>
                         <Table>
                         <thead>
                             <tr>
