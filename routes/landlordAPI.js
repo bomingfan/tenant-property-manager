@@ -46,7 +46,7 @@ const jwtMW = exjwt({
         if (result) {
           // then issue a token to the user 
           // with a message
-          let token = jwt.sign({ email: data.email, id: data.id }, 'keyboard cat 4 ever', { expiresIn: 10 * 60 } );
+          let token = jwt.sign({ email: data.email, id: data.id, firstname: data.firstname }, 'keyboard cat 4 ever', { expiresIn: 10 * 60 } );
           res.json({successs: true, token: token});
         } else {
           // otherwise let the client know

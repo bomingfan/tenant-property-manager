@@ -36,18 +36,9 @@ module.exports = function(app) {
     .catch(err=> res.status(422).json(err));
 })
 
-app.get("/findll/:tId", function(req, res){
-  db.Landlord.findAll({
-    include: [
-      {
-        model: db.Property, 
-        include: [{
-          model: db.Tenant,
-          where: {id: req.params.tId }
-        }]  
-      }
-    ]
-  }).then(dbJoin => res.json(dbJoin));
+app.get("/findll/:pId", function(req, res){
+  db.Property.findById(req.params.pId)
+  .then(dbProperty => res.json(dbProperty));
 })
 
 }
