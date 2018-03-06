@@ -13,7 +13,7 @@ module.exports = function(app) {
   app.post("/landlord/new", function(req, res) {
     db.Landlord.create(req.body).then(function(dbLandlord) {
       res.json(dbLandlord);
-    });
+    }).catch(err => res.status(422).json(err))
   });
 
   // See the react auth blog in which cors is required for access
